@@ -20,8 +20,7 @@ class MediaTable extends Migration
             $table->string('url');
             $table->string('file_name');
             $table->string('file_extension', 30);
-            $table->string('file_type', 30);
-            $table->integer('file_size');
+            $table->text('meta');
         });
 
         Schema::table('media', function (Blueprint $table) {
