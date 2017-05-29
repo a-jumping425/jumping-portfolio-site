@@ -72,30 +72,18 @@
         </div>
     </div>
     <div class="col-md-8">
-        <div class="table-actions-wrapper">
-            <span> </span>
-            <select class="table-group-action-input form-control input-inline input-small input-sm">
-                <option value="">Select...</option>
-                <option value="Cancel">Cancel</option>
-                <option value="Cancel">Hold</option>
-                <option value="Cancel">On Hold</option>
-                <option value="Close">Close</option>
-            </select>
-            <button class="btn btn-sm green table-group-action-submit">
-                <i class="fa fa-check"></i> Submit</button>
-        </div>
-        <table class="table table-striped table-bordered table-hover" id="datatable_category">
-            <thead>
-            <tr role="row" class="heading">
-                <th width="40px">#</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Slug</th>
-                <th>&nbsp;</th>
-            </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+            <table class="table table-striped table-bordered table-hover" id="datatable_category">
+                <thead>
+                <tr role="row" class="heading">
+                    <th width="40px">#</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Slug</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
     </div>
 </div>
 @endsection

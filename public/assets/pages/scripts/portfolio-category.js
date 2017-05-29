@@ -30,16 +30,44 @@ var PortfolioCategory = function () {
     }
 
     var categoryGrid = function () {
+         var table = $("#datatable_category");
+
+         table.dataTable({
+             ajax: {
+                 url: '/api/portfolio/get_categories',
+                 dataType: 'json',
+                 method: 'post',
+                 data: {
+                     length: 10,
+                     draw: 1,
+                     start: 0
+                 }
+             },
+             columns: [
+                 {data: 'no', className: 'dt-center'},
+                 {data: 'name'},
+                 {data: 'description'},
+                 {data: 'slug'},
+                 {data: 'action', className: 'dt-center'}
+             ],
+             paging: false,
+             ordering: false,
+             createdRow: function (row, data, dataIndex) {
+                 $(row).attr('data-id', data.DT_RowData.id);
+             }
+         });
+        /*
         var grid = new Datatable();
 
         grid.init({
             src: $("#datatable_category"),
             dataTable: {
                 ajax: {
-                    url: 'http://localhost/ajax_p_category.php'
+                    url: '/api/portfolio/get_categories'
                 }
             }
         });
+        */
     }
 
     return {
