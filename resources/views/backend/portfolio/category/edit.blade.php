@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <form id="form_portfolio_category" action="/portfolio/category/update" method="post">
+                <form id="form_portfolio_category" action="/portfolio/category/save" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label class="control-label">Name</label>

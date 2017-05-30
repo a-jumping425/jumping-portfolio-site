@@ -25,12 +25,19 @@ class PortfolioController extends Controller {
      * Save category
      */
     public function saveCategory() {
-        $categoryClass = new PortfolioCategory();
+
+        $id = Input::get('id', 0);
+        if( $id ) {  // Update
+            $categoryClass = PortfolioCategory::find($id);
+        } else {    // New
+            $categoryClass = new PortfolioCategory();
+            $categoryClass->ordering = 9223372036854775807;
+        }
+
         $categoryClass->name = Input::get('name');
         $slug = Input::get('slug') ? Input::get('slug') : Input::get('name');
         $categoryClass->slug = str_slug($slug);
         $categoryClass->description = Input::get('description');
-        $categoryClass->ordering = 9223372036854775807;
         $categoryClass->save();
 
         return redirect('portfolio/category');
