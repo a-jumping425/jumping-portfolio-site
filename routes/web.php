@@ -34,6 +34,8 @@ Route::group([], function () {
 
     Route::get('portfolio/category/edit/{id}', 'Backend\PortfolioController@editCategory')->where('id', '[0-9]+');
 
+    Route::post('portfolio/category/reorder', 'Backend\PortfolioController@reorderCategory');
+
     /**
      * User
      */

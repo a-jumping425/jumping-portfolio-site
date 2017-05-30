@@ -30,6 +30,8 @@ var PortfolioCategory = function () {
     }
 
     var categoryGrid = function() {
+        $.fn.dataTableExt.oStdClasses.sFilterInput = "form-control input-xs input-sm input-inline";
+
         var table = $("#datatable_category").DataTable({
             ajax: {
                 url: '/api/portfolio/get_categories',
@@ -41,24 +43,24 @@ var PortfolioCategory = function () {
                     start: 0
                 }
             },
-            columns: [{
-                data: 'no',
-                className: 'dt-center',
-                searchable: false,
-                width: 30
-            },
+            columns: [
                 {
-                    data: 'name'
+                    data: 'name',
+                    className: 'reorder text-align-left',
+                    width: '20%',
+
                 },
                 {
                     data: 'description'
                 },
                 {
-                    data: 'slug'
+                    data: 'slug',
+                    width: '20%'
                 },
                 {
                     data: null,
                     searchable: false,
+                    width: 110,
                     defaultContent: '<a href="javascript:;" class="btn btn-xs blue edit-butt"><i class="fa fa-edit"></i> Edit</a><a href="javascript:;" class="btn btn-xs red delete-butt"><i class="fa fa-trash"></i> Delete</a>'
                 }
             ],
@@ -67,6 +69,10 @@ var PortfolioCategory = function () {
             createdRow: function(row, data, dataIndex) {
                 // $(row).attr('data-id', data.DT_RowData.id);
                 $(row).find('.edit-butt').attr('href', "/portfolio/category/edit/" + data.DT_RowData.id)
+            },
+            rowReorder: {
+                dataSrc: 'id',
+                update: false   // Disable redraw after reorder
             }
         });
 
@@ -81,7 +87,7 @@ var PortfolioCategory = function () {
                     data: { '_token': $('#form_portfolio_category input[name="_token"]').val() },
                     cache: false,
                     success: function(data, textStatus, jqXHR){
-                        console.log(data, textStatus, jqXHR);
+                        // console.log(data, textStatus, jqXHR);
                         table.ajax.reload();
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -91,6 +97,31 @@ var PortfolioCategory = function () {
                     }
                 });
             }
+        });
+
+        table.on('row-reorder', function(e, diff, edit) {
+            console.log(diff);
+            var orders = [];
+            for ( var i = 0; i < diff.length; i++ ) {
+                orders[i] = {id: diff[i].oldData, pos: diff[i].newPosition};
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/portfolio/category/reorder",
+                data: {
+                    '_token': $('#form_portfolio_category input[name="_token"]').val(),
+                    orders: orders
+                },
+                cache: false,
+                success: function(data, textStatus, jqXHR){
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    // console.log(jqXHR, textStatus, errorThrown);
+                    alert('Sorry! Occurred some error. Please retry again.');
+                    table.ajax.reload();
+                }
+            });
         });
     }
 

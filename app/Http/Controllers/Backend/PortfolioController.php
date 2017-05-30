@@ -67,4 +67,17 @@ class PortfolioController extends Controller {
 
         return view('backend.portfolio.category.edit', ['category' => $category]);
     }
+
+    /**
+     * Reorder category
+     */
+    public function reorderCategory() {
+        $categoryClass = new PortfolioCategory();
+        $categoryClass->reOrder();
+
+        // result => 1: success, 0: error
+        $data = ['result' => 1];
+
+        return response()->json($data);
+    }
 }
