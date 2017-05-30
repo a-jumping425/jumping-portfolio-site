@@ -22,6 +22,12 @@ class SidebarMenu extends Model {
             $url = '/';
         }
 
+        // When url have "/edit", replace id number as {id}. Ex: /edit/10 => /edit/{id}
+        $pos = strpos($url, '/edit');
+        if( $pos !== false ) {
+            $url = substr($url, 0, $pos + 6) . '{id}';
+        }
+
         for($i = 0; $i < count($menus); $i++) {
             if($this->found_flag)
                 break;

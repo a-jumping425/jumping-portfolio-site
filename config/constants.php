@@ -25,7 +25,7 @@ return [
                         [
                             'id' => 'portfolio_edit',
                             'name' => 'Edit Portfolio',
-                            'url' => '/portfolio/edit',
+                            'url' => '/portfolio/edit/{id}',
                             'icon' => '',
                             'hidden' => 1,
                             'children' => []
@@ -48,7 +48,7 @@ return [
                         [
                             'id' => 'portfolio_category_edit',
                             'name' => 'Edit Category',
-                            'url' => '/portfolio/category/edit',
+                            'url' => '/portfolio/category/edit/{id}',
                             'icon' => '',
                             'hidden' => 1,
                             'children' => []
@@ -64,7 +64,7 @@ return [
                         [
                             'id' => 'portfolio_skill_edit',
                             'name' => 'Edit Skill',
-                            'url' => '/portfolio/skill/edit',
+                            'url' => '/portfolio/skill/edit/{id}',
                             'icon' => '',
                             'hidden' => 1,
                             'children' => []
@@ -89,7 +89,7 @@ return [
                         [
                             'id' => 'user_edit',
                             'name' => 'Edit User',
-                            'url' => '/user/edit',
+                            'url' => '/user/edit/{id}',
                             'icon' => '',
                             'hidden' => 1,
                             'children' => []
