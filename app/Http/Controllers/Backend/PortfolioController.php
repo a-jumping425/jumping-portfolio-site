@@ -35,4 +35,18 @@ class PortfolioController extends Controller {
 
         return redirect('portfolio/category');
     }
+
+    /**
+     * Delete category
+     * @param int $id The category id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteCategory($id) {
+        PortfolioCategory::destroy($id);
+
+        // result => 1: success, 0: error
+        $data = ['result' => 1];
+        
+        return response()->json($data);
+    }
 }

@@ -18,10 +18,22 @@ Route::group([], function () {
 
     Route::get('/', 'Backend\DashboardController@show');
 
+    /**
+     * Portfolio
+     */
     Route::get('portfolio', 'Backend\PortfolioController@showPortfolios');
 
+    /**
+     * Portfolio category
+     */
     Route::get('portfolio/category', 'Backend\PortfolioController@showCategories');
+
     Route::post('portfolio/category/save', 'Backend\PortfolioController@saveCategory');
 
+    Route::post('portfolio/category/delete/{id}', 'Backend\PortfolioController@deleteCategory')->where('id', '[0-9]+');
+
+    /**
+     * User
+     */
     Route::get('user/new', 'Backend\UserController@newUser');
 });
