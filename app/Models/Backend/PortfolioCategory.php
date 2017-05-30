@@ -15,4 +15,16 @@ class PortfolioCategory extends Model {
      */
     public $timestamps = false;
 
+    /**
+     * Update order
+     */
+    public function updateOrder() {
+        $rows = $this->orderBy('ordering', 'asc')->get();
+
+        for($i = 0; $i < count($rows); $i++) {
+            $row = $rows[$i];
+            $row->ordering = $i + 1;
+            $row->save();
+        }
+    }
 }

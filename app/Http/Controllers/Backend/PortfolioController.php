@@ -40,6 +40,8 @@ class PortfolioController extends Controller {
         $categoryClass->description = Input::get('description');
         $categoryClass->save();
 
+        $categoryClass->updateOrder();
+
         return redirect('portfolio/category');
     }
 
