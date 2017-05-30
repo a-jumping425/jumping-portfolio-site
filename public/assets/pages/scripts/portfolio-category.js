@@ -65,14 +65,9 @@ var PortfolioCategory = function () {
             paging: false,
             ordering: false,
             createdRow: function(row, data, dataIndex) {
-                $(row).attr('data-id', data.DT_RowData.id);
+                // $(row).attr('data-id', data.DT_RowData.id);
+                $(row).find('.edit-butt').attr('href', "/portfolio/category/edit/" + data.DT_RowData.id)
             }
-        });
-
-        // Click "Edit" button
-        $('#datatable_category tbody').on('click', '.edit-butt', function() {
-            var id = table.row($(this).parents('tr')).data().DT_RowData.id;
-            console.log(id);
         });
 
         // Click "Delete" button

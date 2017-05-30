@@ -46,7 +46,16 @@ class PortfolioController extends Controller {
 
         // result => 1: success, 0: error
         $data = ['result' => 1];
-        
+
         return response()->json($data);
+    }
+
+    /**
+     * Edit category
+     */
+    public function editCategory($id) {
+        $category = PortfolioCategory::find($id);
+
+        return view('backend.portfolio.category.edit', ['category' => $category]);
     }
 }

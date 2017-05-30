@@ -32,6 +32,8 @@ Route::group([], function () {
 
     Route::post('portfolio/category/delete/{id}', 'Backend\PortfolioController@deleteCategory')->where('id', '[0-9]+');
 
+    Route::get('portfolio/category/edit/{id}', 'Backend\PortfolioController@editCategory')->where('id', '[0-9]+');
+
     /**
      * User
      */
