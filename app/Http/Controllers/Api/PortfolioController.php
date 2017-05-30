@@ -18,7 +18,6 @@ class PortfolioController extends Controller {
             $category = &$categories[$i];
             $category->DT_RowId = 'row_' . $category->id;
             $category->no = $i + 1;
-            $category->action = 'Actions';
             $category->DT_RowData = ['id' => $category->id, 'ordering' => $category->ordering];
         }
         $data['data'] = $categories;

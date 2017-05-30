@@ -29,47 +29,54 @@ var PortfolioCategory = function () {
         });
     }
 
-    var categoryGrid = function () {
-         var table = $("#datatable_category");
+    var categoryGrid = function() {
+        var table = $("#datatable_category");
 
-         table.dataTable({
-             ajax: {
-                 url: '/api/portfolio/get_categories',
-                 dataType: 'json',
-                 method: 'post',
-                 data: {
-                     length: 10,
-                     draw: 1,
-                     start: 0
-                 }
-             },
-             columns: [
-                 {data: 'no', className: 'dt-center'},
-                 {data: 'name'},
-                 {data: 'description'},
-                 {data: 'slug'},
-                 {data: 'action', className: 'dt-center'}
-             ],
-             paging: false,
-             ordering: false,
-             createdRow: function (row, data, dataIndex) {
-                 $(row).attr('data-id', data.DT_RowData.id);
-             }
-         });
-        /*
-        var grid = new Datatable();
-
-        grid.init({
-            src: $("#datatable_category"),
-            dataTable: {
-                ajax: {
-                    url: '/api/portfolio/get_categories'
+        table.dataTable({
+            ajax: {
+                url: '/api/portfolio/get_categories',
+                dataType: 'json',
+                method: 'post',
+                data: {
+                    length: 10,
+                    draw: 1,
+                    start: 0
                 }
+            },
+            columns: [{
+                data: 'no',
+                className: 'dt-center',
+                searchable: false,
+                width: 30
+            },
+                {
+                    data: 'name'
+                },
+                {
+                    data: 'description'
+                },
+                {
+                    data: 'slug'
+                },
+                {
+                    data: null,
+                    searchable: false,
+                    defaultContent: '<a href="javascript:;" class="btn btn-xs blue"><i class="fa fa-edit"></i> Edit</a><a href="javascript:;" class="btn btn-xs red"><i class="fa fa-trash"></i> Delete</a>'
+                }
+            ],
+            paging: false,
+            ordering: false,
+            createdRow: function(row, data, dataIndex) {
+                $(row).attr('data-id', data.DT_RowData.id);
             }
         });
-        */
-    }
 
+        $('#example tbody').on('click', 'button', function() {
+            var data = table.row($(this).parents('tr')).data();
+            alert(data[0] + "'s salary is: " + data[5]);
+        });
+    }
+    
     return {
         // main function to initiate the module
         init: function () {
