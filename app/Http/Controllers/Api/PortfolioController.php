@@ -9,7 +9,7 @@ class PortfolioController extends Controller {
     /**
      * Show categories
      */
-    public function showCategories() {
+    public function getCategories() {
         $data = [];
 
         $categories = PortfolioCategory::orderBy('ordering', 'asc')

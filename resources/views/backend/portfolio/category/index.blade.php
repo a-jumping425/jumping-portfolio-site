@@ -9,9 +9,7 @@
 @section('page_level_plugins_js')
 <script src="/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
-<script src="/assets/global/scripts/datatable.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
-<script src="/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
 @endsection
 
 @section('page_level_js')
@@ -62,7 +60,7 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Description</label>
-                        <textarea name="description" class="form-control" rows="3"></textarea>
+                        <textarea name="description" class="form-control" rows="5"></textarea>
                     </div>
                     <div class="margin-top-10">
                         <button type="submit" class="btn green">Add New Category</button>
@@ -75,7 +73,6 @@
             <table class="table table-striped table-bordered table-hover" id="datatable_category">
                 <thead>
                 <tr role="row" class="heading">
-                    <th width="40px">#</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Slug</th>

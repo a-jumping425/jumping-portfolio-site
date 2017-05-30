@@ -115,6 +115,7 @@ var PortfolioCategory = function () {
                 },
                 cache: false,
                 success: function(data, textStatus, jqXHR){
+                    // console.log(data, textStatus, jqXHR);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     // console.log(jqXHR, textStatus, errorThrown);
