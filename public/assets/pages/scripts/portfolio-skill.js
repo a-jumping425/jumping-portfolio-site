@@ -1,6 +1,6 @@
-var PortfolioCategory = function () {
-    var saveCategory = function () {
-        var form = $('#form_portfolio_category');
+var PortfolioSkill = function () {
+    var saveSkill = function () {
+        var form = $('#form_portfolio_skill');
 
         form.validate({
             errorElement: 'span', //default input error message container
@@ -29,12 +29,13 @@ var PortfolioCategory = function () {
         });
     }
 
-    var categoryGrid = function() {
+    var skillGrid = function() {
         $.fn.dataTableExt.oStdClasses.sFilterInput = "form-control input-xs input-sm input-inline";
+        $.fn.dataTableExt.oStdClasses.sLengthSelect = "form-control input-xs input-sm input-inline";
 
-        var table = $("#datatable_category").DataTable({
+        var table = $("#datatable_skill").DataTable({
             ajax: {
-                url: '/api/portfolio/get_categories',
+                url: '/api/portfolio/get_skills',
                 dataType: 'json',
                 method: 'post',
                 data: {
@@ -46,7 +47,6 @@ var PortfolioCategory = function () {
             columns: [
                 {
                     data: 'name',
-                    className: 'reorder text-align-left',
                     width: '20%',
 
                 },
@@ -64,27 +64,23 @@ var PortfolioCategory = function () {
                     defaultContent: '<a href="javascript:;" class="btn btn-xs blue edit-butt"><i class="fa fa-edit"></i> Edit</a><a href="javascript:;" class="btn btn-xs red delete-butt"><i class="fa fa-trash"></i> Delete</a>'
                 }
             ],
-            paging: false,
+            paging: true,
             ordering: false,
             createdRow: function(row, data, dataIndex) {
                 // $(row).attr('data-id', data.DT_RowData.id);
-                $(row).find('.edit-butt').attr('href', "/portfolio/category/edit/" + data.DT_RowData.id)
+                $(row).find('.edit-butt').attr('href', "/portfolio/skill/edit/" + data.id)
             },
-            rowReorder: {
-                dataSrc: 'id',
-                update: false   // Disable redraw after reorder
-            }
         });
 
         // Click "Delete" button
-        $('#datatable_category tbody').on('click', '.delete-butt', function() {
+        $('#datatable_skill tbody').on('click', '.delete-butt', function() {
             if( confirm('Are you sure you want to delete selected item?') ) {
-                var id = table.row($(this).parents('tr')).data().id;
+                var id = table.row($(this).parents('tr')).data().DT_RowData.id;
                 // table.row($(this).parents('tr')).remove().draw();
                 $.ajax({
                     type: "POST",
-                    url: "/portfolio/category/delete/" + id,
-                    data: { '_token': $('#form_portfolio_category input[name="_token"]').val() },
+                    url: "/portfolio/skill/delete/" + id,
+                    data: { '_token': $('#form_portfolio_skill input[name="_token"]').val() },
                     cache: false,
                     success: function(data, textStatus, jqXHR){
                         // console.log(data, textStatus, jqXHR);
@@ -98,43 +94,17 @@ var PortfolioCategory = function () {
                 });
             }
         });
-
-        table.on('row-reorder', function(e, diff, edit) {
-            // console.log(diff);
-            var orders = [];
-            for ( var i = 0; i < diff.length; i++ ) {
-                orders[i] = {id: diff[i].oldData, pos: diff[i].newPosition};
-            }
-
-            $.ajax({
-                type: "POST",
-                url: "/portfolio/category/reorder",
-                data: {
-                    '_token': $('#form_portfolio_category input[name="_token"]').val(),
-                    orders: orders
-                },
-                cache: false,
-                success: function(data, textStatus, jqXHR){
-                    // console.log(data, textStatus, jqXHR);
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    // console.log(jqXHR, textStatus, errorThrown);
-                    alert('Sorry! Occurred some error. Please retry again.');
-                    table.ajax.reload();
-                }
-            });
-        });
     }
 
     return {
         // main function to initiate the module
         init: function () {
-            saveCategory();
-            categoryGrid();
+            saveSkill();
+            skillGrid();
         }
     };
 }();
 
 jQuery(document).ready(function() {
-    PortfolioCategory.init();
+    PortfolioSkill.init();
 });
