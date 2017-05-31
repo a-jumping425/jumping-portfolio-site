@@ -66,6 +66,8 @@ var PortfolioSkill = function () {
             ],
             paging: true,
             ordering: false,
+            // pagingType: "bootstrap_extended",
+            pagingType: "bootstrap_full_number",
             createdRow: function(row, data, dataIndex) {
                 // $(row).attr('data-id', data.DT_RowData.id);
                 $(row).find('.edit-butt').attr('href', "/portfolio/skill/edit/" + data.id)
