@@ -64,6 +64,11 @@ var PortfolioSkill = function () {
                     defaultContent: '<a href="javascript:;" class="btn btn-xs blue edit-butt"><i class="fa fa-edit"></i> Edit</a><a href="javascript:;" class="btn btn-xs red delete-butt"><i class="fa fa-trash"></i> Delete</a>'
                 }
             ],
+            lengthMenu: [
+                [15, 50, 100, -1],
+                [15, 50, 100, "All"] // change per page values here
+            ],
+            pageLength: 15,     // set the initial value
             paging: true,
             ordering: false,
             // pagingType: "bootstrap_extended",
