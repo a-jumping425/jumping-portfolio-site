@@ -2,10 +2,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Backend\Portfolio;
 use App\Models\Backend\PortfolioCategory;
 
-class PortfolioController extends Controller {
+class PortfolioCategoryController extends Controller {
     /**
      * Show categories
      */

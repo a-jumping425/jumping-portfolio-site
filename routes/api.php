@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('portfolio/get_categories', 'Api\PortfolioController@getCategories');
+Route::post('portfolio/get_categories', 'Api\PortfolioCategoryController@getCategories');

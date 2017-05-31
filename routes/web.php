@@ -23,18 +23,29 @@ Route::group([], function () {
      */
     Route::get('portfolio', 'Backend\PortfolioController@showPortfolios');
 
-    /**
-     * Portfolio category
-     */
-    Route::get('portfolio/category', 'Backend\PortfolioController@showCategories');
+        /**
+         * Portfolio category
+         */
+        Route::get('portfolio/category', 'Backend\PortfolioCategoryController@showCategories');
 
-    Route::post('portfolio/category/save', 'Backend\PortfolioController@saveCategory');
+        Route::post('portfolio/category/save', 'Backend\PortfolioCategoryController@saveCategory');
 
-    Route::post('portfolio/category/delete/{id}', 'Backend\PortfolioController@deleteCategory')->where('id', '[0-9]+');
+        Route::post('portfolio/category/delete/{id}', 'Backend\PortfolioCategoryController@deleteCategory')->where('id', '[0-9]+');
 
-    Route::get('portfolio/category/edit/{id}', 'Backend\PortfolioController@editCategory')->where('id', '[0-9]+');
+        Route::get('portfolio/category/edit/{id}', 'Backend\PortfolioCategoryController@editCategory')->where('id', '[0-9]+');
 
-    Route::post('portfolio/category/reorder', 'Backend\PortfolioController@reorderCategory');
+        Route::post('portfolio/category/reorder', 'Backend\PortfolioCategoryController@reorderCategory');
+
+        /**
+         * Portfolio skill
+         */
+        Route::get('portfolio/skill', 'Backend\PortfolioSkillController@showSkills');
+
+        Route::post('portfolio/skill/save', 'Backend\PortfolioSkillController@saveSkill');
+
+        Route::post('portfolio/skill/delete/{id}', 'Backend\PortfolioSkillController@deleteSkill')->where('id', '[0-9]+');
+
+        Route::get('portfolio/skill/edit/{id}', 'Backend\PortfolioSkillController@editSkill')->where('id', '[0-9]+');
 
     /**
      * User
