@@ -15,8 +15,8 @@ class PortfolioCategoriesTable extends Migration
     {
         Schema::create('portfolio_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('slug');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->bigInteger('ordering');
         });

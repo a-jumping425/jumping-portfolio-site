@@ -15,9 +15,9 @@ class PortfolioSkillsTable extends Migration
     {
         Schema::create('portfolio_skills', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('slug');
-            $table->text('description');
+            $table->string('name')->unique();;
+            $table->string('slug')->unique();;
+            $table->text('description')->nullable();
         });
 
         Schema::table('portfolio_skills', function (Blueprint $table) {
