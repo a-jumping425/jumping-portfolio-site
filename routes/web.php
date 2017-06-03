@@ -23,6 +23,7 @@ Route::group([], function () {
      */
     Route::get('portfolio', 'Backend\PortfolioController@showPortfolios');
 
+    Route::get('portfolio/new', 'Backend\PortfolioController@editPortfolio');
 
         /**
          * Portfolio category
