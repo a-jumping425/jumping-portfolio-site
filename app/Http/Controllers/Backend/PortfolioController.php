@@ -12,4 +12,11 @@ class PortfolioController extends Controller {
     public function showPortfolios() {
         return view('backend.portfolio.index');
     }
+
+    /**
+     * New portfolio
+     */
+    public function editPortfolio() {
+        return view('backend.portfolio.edit');
+    }
 }

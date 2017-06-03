@@ -1,6 +1,6 @@
 @extends('backend.template')
 
-@section('title', 'All portfolios')
+@section('title', 'New portfolio')
 
 @section('page_level_plugins_css')
 
@@ -24,13 +24,16 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <span>Portfolios</span>
+            <a href="{{ url('/portfolio') }}">Portfolios</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>New portfolio</span>
         </li>
     </ul>
 </div>
 <!-- END PAGE BAR -->
 <!-- BEGIN PAGE TITLE-->
-<h1 class="page-title">All Portfolios</h1>
 <!-- END PAGE TITLE-->
 <!-- END PAGE HEADER-->
 <div class="row">
