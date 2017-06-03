@@ -36,7 +36,7 @@ var PortfolioCategory = function () {
             ajax: {
                 url: '/api/portfolio/get_categories',
                 dataType: 'json',
-                method: 'post',
+                method: 'POST',
                 data: {
                     length: 10,
                     draw: 1,
@@ -82,16 +82,16 @@ var PortfolioCategory = function () {
                 var id = table.row($(this).parents('tr')).data().id;
                 // table.row($(this).parents('tr')).remove().draw();
                 $.ajax({
-                    type: "POST",
+                    method: "POST",
                     url: "/portfolio/category/delete/" + id,
                     data: { '_token': $('#form_portfolio_category input[name="_token"]').val() },
                     cache: false,
                     success: function(data, textStatus, jqXHR){
-                        // console.log(data, textStatus, jqXHR);
+                        // console.log('success', data, textStatus, jqXHR);
                         table.ajax.reload();
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        // console.log(jqXHR, textStatus, errorThrown);
+                        // console.log('error', jqXHR, textStatus, errorThrown);
                         alert('Sorry! Occurred some error. Please retry again.');
                         table.ajax.reload();
                     }
@@ -107,7 +107,7 @@ var PortfolioCategory = function () {
             }
 
             $.ajax({
-                type: "POST",
+                method: "POST",
                 url: "/portfolio/category/reorder",
                 data: {
                     '_token': $('#form_portfolio_category input[name="_token"]').val(),

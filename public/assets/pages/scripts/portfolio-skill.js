@@ -85,16 +85,16 @@ var PortfolioSkill = function () {
                 var id = table.row($(this).parents('tr')).data().DT_RowData.id;
                 // table.row($(this).parents('tr')).remove().draw();
                 $.ajax({
-                    type: "POST",
+                    method: "POST",
                     url: "/portfolio/skill/delete/" + id,
                     data: { '_token': $('#form_portfolio_skill input[name="_token"]').val() },
                     cache: false,
                     success: function(data, textStatus, jqXHR){
-                        // console.log(data, textStatus, jqXHR);
+                        // console.log('success', data, textStatus, jqXHR);
                         table.ajax.reload();
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        // console.log(jqXHR, textStatus, errorThrown);
+                        // console.log('error', jqXHR, textStatus, errorThrown);
                         alert('Sorry! Occurred some error. Please retry again.');
                         table.ajax.reload();
                     }
