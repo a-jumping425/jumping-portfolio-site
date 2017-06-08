@@ -38,11 +38,7 @@ var PortfolioSkill = function () {
                 url: '/api/portfolio/get_skills',
                 dataType: 'json',
                 method: 'post',
-                data: {
-                    length: 10,
-                    draw: 1,
-                    start: 0
-                }
+                data: {}
             },
             columns: [
                 {

@@ -37,11 +37,7 @@ var PortfolioCategory = function () {
                 url: '/api/portfolio/get_categories',
                 dataType: 'json',
                 method: 'POST',
-                data: {
-                    length: 10,
-                    draw: 1,
-                    start: 0
-                }
+                data: {}
             },
             columns: [
                 {
