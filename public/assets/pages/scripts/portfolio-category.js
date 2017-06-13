@@ -27,7 +27,7 @@ var PortfolioCategory = function () {
                 form[0].submit(); // submit the form
             }
         });
-    }
+    };
 
     var categoryGrid = function() {
         $.fn.dataTableExt.oStdClasses.sFilterInput = "form-control input-xs input-sm input-inline";
@@ -120,7 +120,7 @@ var PortfolioCategory = function () {
                 }
             });
         });
-    }
+    };
 
     return {
         // main function to initiate the module

@@ -27,7 +27,7 @@ var PortfolioSkill = function () {
                 form[0].submit(); // submit the form
             }
         });
-    }
+    };
 
     var skillGrid = function() {
         $.fn.dataTableExt.oStdClasses.sFilterInput = "form-control input-xs input-sm input-inline";
@@ -97,7 +97,7 @@ var PortfolioSkill = function () {
                 });
             }
         });
-    }
+    };
 
     return {
         // main function to initiate the module

@@ -27,7 +27,7 @@ var PortfolioCategory = function () {
                 form[0].submit(); // submit the form
             }
         });
-    }
+    };
 
     return {
         // main function to initiate the module
