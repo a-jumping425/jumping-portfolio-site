@@ -10,7 +10,6 @@
     <title>Jumping - @yield('title')</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="Preview page of Metronic Admin Theme #1 for blank page layout" name="description" />
     <meta content="" name="author" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
@@ -47,7 +46,7 @@
             <!-- BEGIN LOGO -->
             <div class="page-logo">
                 <a href="{{ url('/') }}">
-                    <img src="/assets/layouts/layout/img/logo.png" alt="logo" class="logo-default" /> </a>
+                    <img src="/assets/global/img/logo.png" alt="logo" class="logo-default" /> </a>
                 <div class="menu-toggler sidebar-toggler">
                     <span></span>
                 </div>
