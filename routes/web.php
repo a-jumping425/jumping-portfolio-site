@@ -12,9 +12,20 @@
 
 //Route::group(['middleware' => 'auth'], function () {
 Route::group([], function () {
-    Route::get('login', function () {
-        return view('backend/auth/login');
-    });
+    // Authentication Routes...
+    Route::get('login', 'Backend\Auth\LoginController@showLoginForm')->name('login');
+    Route::post('login', 'Backend\Auth\LoginController@login');
+    Route::post('logout', 'Backend\Auth\LoginController@logout')->name('logout');
+
+    // Registration Routes...
+    Route::get('register', 'Backend\Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'Backend\Auth\RegisterController@register');
+
+    // Password Reset Routes...
+    Route::get('password/reset', 'Backend\Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::post('password/email', 'Backend\Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    Route::get('password/reset/{token}', 'Backend\Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    Route::post('password/reset', 'Backend\Auth\ResetPasswordController@reset');
 
     Route::get('/', 'Backend\DashboardController@show');
 
