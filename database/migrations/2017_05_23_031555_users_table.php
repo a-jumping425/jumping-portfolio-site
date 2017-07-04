@@ -19,7 +19,9 @@ class UsersTable extends Migration
             $table->string('email')->unique();
             $table->string('username', 30)->unique();
             $table->string('password');
-            $table->bigInteger('avatar');
+            $table->integer('user_level');
+            $table->bigInteger('avatar')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
 

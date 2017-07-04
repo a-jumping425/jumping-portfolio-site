@@ -18,6 +18,7 @@ class UserMetaTable extends Migration
             $table->bigInteger('user_id');
             $table->string('meta_key');
             $table->text('meta_value');
+
             $table->index('user_id', 'user_id');
             $table->index('meta_key', 'meta_key');
         });
