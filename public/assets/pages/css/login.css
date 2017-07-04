@@ -69,7 +69,8 @@ Login page
   display: none; }
 
 .login .content .register-form {
-  display: none; }
+  /*display: none;*/
+}
 
 .login .content .form-title {
   font-weight: 300;
