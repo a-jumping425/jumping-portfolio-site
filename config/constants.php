@@ -9,8 +9,8 @@ return [
             'hidden' => 0,
             'children' => []
         ], [
-            'id' => 'portfolio',
-            'name' => 'Portfolio',
+            'id' => 'portfolios',
+            'name' => 'Portfolios',
             'url' => '',
             'icon' => 'icon-notebook',
             'hidden' => 0,
@@ -18,7 +18,7 @@ return [
                 [
                     'id' => 'portfolio_all',
                     'name' => 'All Portfolios',
-                    'url' => '/portfolio',
+                    'url' => '/portfolios',
                     'icon' => '',
                     'hidden' => 0,
                     'children' => [
@@ -41,7 +41,7 @@ return [
                 ], [
                     'id' => 'portfolio_categories',
                     'name' => 'Categories',
-                    'url' => '/portfolio/category',
+                    'url' => '/portfolio/categories',
                     'icon' => '',
                     'hidden' => 0,
                     'children' => [
@@ -57,7 +57,7 @@ return [
                 ], [
                     'id' => 'portfolio_skill',
                     'name' => 'Skills',
-                    'url' => '/portfolio/skill',
+                    'url' => '/portfolio/skills',
                     'icon' => '',
                     'hidden' => 0,
                     'children' => [
@@ -73,7 +73,7 @@ return [
                 ]
             ]
         ], [
-            'id' => 'user',
+            'id' => 'users',
             'name' => 'Users',
             'url' => '',
             'icon' => 'icon-user',
@@ -82,7 +82,7 @@ return [
                 [
                     'id' => 'user_all',
                     'name' => 'All Users',
-                    'url' => '/user',
+                    'url' => '/users',
                     'icon' => '',
                     'hidden' => 0,
                     'children' => [

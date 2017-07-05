@@ -34,7 +34,7 @@ class PortfolioCategoryController extends Controller {
 
         $categoryClass->updateOrder();
 
-        return redirect('portfolio/category');
+        return redirect('portfolio/categories');
     }
 
     /**

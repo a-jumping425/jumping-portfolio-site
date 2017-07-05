@@ -32,14 +32,14 @@ Route::group([], function () {
     /**
      * Portfolio
      */
-    Route::get('portfolio', 'Backend\PortfolioController@showPortfolios');
+    Route::get('portfolios', 'Backend\PortfolioController@showPortfolios');
 
     Route::get('portfolio/new', 'Backend\PortfolioController@editPortfolio');
 
         /**
          * Portfolio category
          */
-        Route::get('portfolio/category', 'Backend\PortfolioCategoryController@showCategories');
+        Route::get('portfolio/categories', 'Backend\PortfolioCategoryController@showCategories');
 
         Route::post('portfolio/category/save', 'Backend\PortfolioCategoryController@saveCategory');
 
@@ -52,7 +52,7 @@ Route::group([], function () {
         /**
          * Portfolio skill
          */
-        Route::get('portfolio/skill', 'Backend\PortfolioSkillController@showSkills');
+        Route::get('portfolio/skills', 'Backend\PortfolioSkillController@showSkills');
 
         Route::post('portfolio/skill/save', 'Backend\PortfolioSkillController@saveSkill');
 

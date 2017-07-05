@@ -31,7 +31,7 @@ class PortfolioSkillController extends Controller {
         $skillClass->description = Input::get('description');
         $skillClass->save();
 
-        return redirect('portfolio/skill');
+        return redirect('portfolio/skills');
     }
 
     /**
