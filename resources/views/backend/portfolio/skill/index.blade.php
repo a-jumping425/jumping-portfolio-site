@@ -28,11 +28,11 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{ url('/portfolio') }}">Portfolio</a>
+            <a href="{{ url('/portfolios') }}">Portfolios</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <span>Skill</span>
+            <span>Skills</span>
         </li>
     </ul>
 </div>
