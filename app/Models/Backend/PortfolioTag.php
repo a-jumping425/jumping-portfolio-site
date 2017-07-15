@@ -5,11 +5,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
-class PortfolioSkill extends Model {
+class PortfolioTag extends Model {
     /**
      * @var string
      */
-    protected $table = 'portfolio_skills';
+    protected $table = 'portfolio_tags';
 
     /**
      * @var bool

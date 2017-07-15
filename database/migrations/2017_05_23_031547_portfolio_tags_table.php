@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class PortfolioSkillsTable extends Migration
+class PortfolioTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class PortfolioSkillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('portfolio_skills', function (Blueprint $table) {
+        Schema::create('portfolio_tags', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();;
             $table->string('slug')->unique();;
             $table->text('description')->nullable();
         });
 
-        Schema::table('portfolio_skills', function (Blueprint $table) {
+        Schema::table('portfolio_tags', function (Blueprint $table) {
             //
         });
     }
@@ -32,9 +32,9 @@ class PortfolioSkillsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('portfolio_skills');
+        Schema::drop('portfolio_tags');
 
-        Schema::table('portfolio_skills', function (Blueprint $table) {
+        Schema::table('portfolio_tags', function (Blueprint $table) {
             //
         });
     }

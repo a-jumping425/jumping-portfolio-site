@@ -1,6 +1,6 @@
-var PortfolioSkill = function () {
-    var saveSkill = function () {
-        var form = $('#form_portfolio_skill');
+var PortfolioTag = function () {
+    var saveTag = function () {
+        var form = $('#form_portfolio_tag');
 
         form.validate({
             errorElement: 'span', //default input error message container
@@ -29,13 +29,13 @@ var PortfolioSkill = function () {
         });
     };
 
-    var skillGrid = function() {
+    var tagGrid = function() {
         $.fn.dataTableExt.oStdClasses.sFilterInput = "form-control input-xs input-sm input-inline";
         $.fn.dataTableExt.oStdClasses.sLengthSelect = "form-control input-xs input-sm input-inline";
 
-        var table = $("#datatable_skill").DataTable({
+        var table = $("#datatable_tag").DataTable({
             ajax: {
-                url: '/api/portfolio/get_skills',
+                url: '/api/portfolio/get_tags',
                 dataType: 'json',
                 method: 'post',
                 data: {}
@@ -71,19 +71,19 @@ var PortfolioSkill = function () {
             pagingType: "bootstrap_full_number",
             createdRow: function(row, data, dataIndex) {
                 // $(row).attr('data-id', data.DT_RowData.id);
-                $(row).find('.edit-butt').attr('href', "/portfolio/skill/edit/" + data.id)
+                $(row).find('.edit-butt').attr('href', "/portfolio/tag/edit/" + data.id)
             },
         });
 
         // Click "Delete" button
-        $('#datatable_skill tbody').on('click', '.delete-butt', function() {
+        $('#datatable_tag tbody').on('click', '.delete-butt', function() {
             if( confirm('Are you sure you want to delete selected item?') ) {
                 var id = table.row($(this).parents('tr')).data().DT_RowData.id;
                 // table.row($(this).parents('tr')).remove().draw();
                 $.ajax({
                     method: "POST",
-                    url: "/portfolio/skill/delete/" + id,
-                    data: { '_token': $('#form_portfolio_skill input[name="_token"]').val() },
+                    url: "/portfolio/tag/delete/" + id,
+                    data: { '_token': $('#form_portfolio_tag input[name="_token"]').val() },
                     cache: false,
                     success: function(data, textStatus, jqXHR){
                         // console.log('success', data, textStatus, jqXHR);
@@ -102,12 +102,12 @@ var PortfolioSkill = function () {
     return {
         // main function to initiate the module
         init: function () {
-            saveSkill();
-            skillGrid();
+            saveTag();
+            tagGrid();
         }
     };
 }();
 
 jQuery(document).ready(function() {
-    PortfolioSkill.init();
+    PortfolioTag.init();
 });

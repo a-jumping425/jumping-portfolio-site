@@ -55,16 +55,16 @@ return [
                         ]
                     ]
                 ], [
-                    'id' => 'portfolio_skill',
-                    'name' => 'Skills',
-                    'url' => '/portfolio/skills',
+                    'id' => 'portfolio_tag',
+                    'name' => 'Tags',
+                    'url' => '/portfolio/tags',
                     'icon' => '',
                     'hidden' => 0,
                     'children' => [
                         [
-                            'id' => 'portfolio_skill_edit',
-                            'name' => 'Edit Skill',
-                            'url' => '/portfolio/skill/edit/{id}',
+                            'id' => 'portfolio_tag_edit',
+                            'name' => 'Edit Tag',
+                            'url' => '/portfolio/tag/edit/{id}',
                             'icon' => '',
                             'hidden' => 1,
                             'children' => []

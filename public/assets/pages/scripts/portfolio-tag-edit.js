@@ -1,6 +1,6 @@
-var PortfolioSkill = function () {
-    var editSkill = function () {
-        var form = $('#form_portfolio_skill');
+var PortfolioTag = function () {
+    var editTag = function () {
+        var form = $('#form_portfolio_tag');
 
         form.validate({
             errorElement: 'span', //default input error message container
@@ -32,11 +32,11 @@ var PortfolioSkill = function () {
     return {
         // main function to initiate the module
         init: function () {
-            editSkill();
+            editTag();
         }
     };
 }();
 
 jQuery(document).ready(function() {
-    PortfolioSkill.init();
+    PortfolioTag.init();
 });

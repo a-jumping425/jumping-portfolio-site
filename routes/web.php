@@ -50,15 +50,15 @@ Route::group([], function () {
         Route::post('portfolio/category/reorder', 'Backend\PortfolioCategoryController@reorderCategory');
 
         /**
-         * Portfolio skill
+         * Portfolio tag
          */
-        Route::get('portfolio/skills', 'Backend\PortfolioSkillController@showSkills');
+        Route::get('portfolio/tags', 'Backend\PortfolioTagController@showTags');
 
-        Route::post('portfolio/skill/save', 'Backend\PortfolioSkillController@saveSkill');
+        Route::post('portfolio/tag/save', 'Backend\PortfolioTagController@saveTag');
 
-        Route::post('portfolio/skill/delete/{id}', 'Backend\PortfolioSkillController@deleteSkill')->where('id', '[0-9]+');
+        Route::post('portfolio/tag/delete/{id}', 'Backend\PortfolioTagController@deleteTag')->where('id', '[0-9]+');
 
-        Route::get('portfolio/skill/edit/{id}', 'Backend\PortfolioSkillController@editSkill')->where('id', '[0-9]+');
+        Route::get('portfolio/tag/edit/{id}', 'Backend\PortfolioTagController@editTag')->where('id', '[0-9]+');
 
     /**
      * User
