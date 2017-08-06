@@ -55,6 +55,9 @@ Route::group([], function () {
     /**
      * User
      */
+    Route::get('users', 'Backend\UserController@showUsers');
+    Route::get('user/get_users', 'Backend\UserController@getUsers');
     Route::get('user/new', 'Backend\UserController@newUser');
     Route::post('user/save', 'Backend\UserController@saveUser');
+    Route::post('user/delete/{id}', 'Backend\UserController@deleteUser')->where('id', '[0-9]+');
 });

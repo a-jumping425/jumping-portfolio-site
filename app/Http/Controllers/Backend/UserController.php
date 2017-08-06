@@ -59,4 +59,49 @@ class UserController extends Controller {
         else
             return redirect('users');
     }
+
+    /**
+     * Get users
+     */
+    public function getUsers() {
+        $data = [];
+
+        $rows = User::orderBy('created_at', 'desc')
+            ->get();
+        for ($i = 0; $i < count($rows); $i++) {
+            $row = &$rows[$i];
+            $row->DT_RowId = 'row_' . $row->id;
+            $row->DT_RowData = ['id' => $row->id];
+            if ($row->avatar_url) {
+                $row->thumbnail = '<img class="thumbnail" src="'. $row->avatar_url .'" />';
+            }
+            $row->name = $row->first_name .' '. $row->last_name;
+            $row->enabled = $row->enabled ? '<span class="label label-sm label-success"> Enabled </span>' : '<span class="label label-sm label-danger"> Disabled </span>';
+            $row->role = ($row->user_level == 1) ? ' Administrator ' : ' User ';
+        }
+        $data['data'] = $rows;
+
+        return response()->json($data);
+    }
+
+    /**
+     * Delete user
+     */
+    public function deleteUser($id) {
+        // Get data in database
+        $obj = User::find($id);
+
+        // Remove avatar
+        if ($obj->avatar) {
+            Storage::disk('public')->delete($obj->avatar);
+        }
+
+        // Remove data in database
+        User::destroy($id);
+
+        // result => 1: success, 0: error
+        $data = ['result' => 1];
+
+        return response()->json($data);
+    }
 }
