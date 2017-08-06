@@ -10,23 +10,10 @@
 |
 */
 
-//Route::group(['middleware' => 'auth'], function () {
-Route::group([], function () {
-    // Authentication Routes...
-    Route::get('login', 'Backend\Auth\LoginController@showLoginForm')->name('login');
-    Route::post('login', 'Backend\Auth\LoginController@login');
-    Route::post('logout', 'Backend\Auth\LoginController@logout')->name('logout');
-
-    // Registration Routes...
-    Route::get('register', 'Backend\Auth\RegisterController@showRegistrationForm')->name('register');
-    Route::post('register', 'Backend\Auth\RegisterController@register');
-
-    // Password Reset Routes...
-    Route::get('password/reset', 'Backend\Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-    Route::post('password/email', 'Backend\Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-    Route::get('password/reset/{token}', 'Backend\Auth\ResetPasswordController@showResetForm')->name('password.reset');
-    Route::post('password/reset', 'Backend\Auth\ResetPasswordController@reset');
-
+Route::middleware(['auth'])->group(function () {
+    /**
+     * Dashboard
+     */
     Route::get('/', 'Backend\DashboardController@show');
 
     /**
@@ -61,4 +48,21 @@ Route::group([], function () {
     Route::get('user/edit/{id}', 'Backend\UserController@editUser')->where('id', '[0-9]+');
     Route::post('user/save', 'Backend\UserController@saveUser');
     Route::post('user/delete/{id}', 'Backend\UserController@deleteUser')->where('id', '[0-9]+');
+});
+
+Route::group([], function () {
+    // Authentication Routes...
+    Route::get('login', 'Backend\Auth\LoginController@showLoginForm')->name('login');
+    Route::post('login', 'Backend\Auth\LoginController@login');
+    Route::get('logout', 'Backend\Auth\LoginController@logout')->name('logout');
+
+    // Registration Routes...
+    Route::get('register', 'Backend\Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'Backend\Auth\RegisterController@register');
+
+    // Password Reset Routes...
+    Route::get('password/reset', 'Backend\Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::post('password/email', 'Backend\Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    Route::get('password/reset/{token}', 'Backend\Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    Route::post('password/reset', 'Backend\Auth\ResetPasswordController@reset');
 });
