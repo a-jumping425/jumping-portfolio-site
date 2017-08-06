@@ -33,35 +33,28 @@ Route::group([], function () {
      * Portfolio
      */
     Route::get('portfolios', 'Backend\PortfolioController@showPortfolios');
-
     Route::get('portfolio/new', 'Backend\PortfolioController@editPortfolio');
 
-        /**
-         * Portfolio category
-         */
-        Route::get('portfolio/categories', 'Backend\PortfolioCategoryController@showCategories');
+    /**
+     * Portfolio category
+     */
+    Route::get('portfolio/categories', 'Backend\PortfolioCategoryController@showCategories');
+    Route::post('portfolio/category/save', 'Backend\PortfolioCategoryController@saveCategory');
+    Route::post('portfolio/category/delete/{id}', 'Backend\PortfolioCategoryController@deleteCategory')->where('id', '[0-9]+');
+    Route::get('portfolio/category/edit/{id}', 'Backend\PortfolioCategoryController@editCategory')->where('id', '[0-9]+');
+    Route::post('portfolio/category/reorder', 'Backend\PortfolioCategoryController@reorderCategory');
 
-        Route::post('portfolio/category/save', 'Backend\PortfolioCategoryController@saveCategory');
-
-        Route::post('portfolio/category/delete/{id}', 'Backend\PortfolioCategoryController@deleteCategory')->where('id', '[0-9]+');
-
-        Route::get('portfolio/category/edit/{id}', 'Backend\PortfolioCategoryController@editCategory')->where('id', '[0-9]+');
-
-        Route::post('portfolio/category/reorder', 'Backend\PortfolioCategoryController@reorderCategory');
-
-        /**
-         * Portfolio tag
-         */
-        Route::get('portfolio/tags', 'Backend\PortfolioTagController@showTags');
-
-        Route::post('portfolio/tag/save', 'Backend\PortfolioTagController@saveTag');
-
-        Route::post('portfolio/tag/delete/{id}', 'Backend\PortfolioTagController@deleteTag')->where('id', '[0-9]+');
-
-        Route::get('portfolio/tag/edit/{id}', 'Backend\PortfolioTagController@editTag')->where('id', '[0-9]+');
+    /**
+     * Portfolio tag
+     */
+    Route::get('portfolio/tags', 'Backend\PortfolioTagController@showTags');
+    Route::post('portfolio/tag/save', 'Backend\PortfolioTagController@saveTag');
+    Route::post('portfolio/tag/delete/{id}', 'Backend\PortfolioTagController@deleteTag')->where('id', '[0-9]+');
+    Route::get('portfolio/tag/edit/{id}', 'Backend\PortfolioTagController@editTag')->where('id', '[0-9]+');
 
     /**
      * User
      */
     Route::get('user/new', 'Backend\UserController@newUser');
+    Route::post('user/save', 'Backend\UserController@saveUser');
 });

@@ -54,14 +54,22 @@
             </div>
             <div class="portlet-body">
                 <!-- BEGIN FORM-->
-                <form action="#" id="form_user_new" class="form-horizontal">
+                <form action="/user/save" id="form_user_new" method="post" class="form-horizontal" enctype="multipart/form-data">
+                    {{ csrf_field() }}
                     <div class="form-body">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Name
+                            <label class="control-label col-md-3">First Name
                                 <span class="required"> * </span>
                             </label>
                             <div class="col-md-4">
-                                <input type="text" name="name" class="form-control" /> </div>
+                                <input type="text" name="first_name" class="form-control" /> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Last Name
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" name="last_name" class="form-control" /> </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">Email
@@ -100,7 +108,7 @@
                             </label>
                             <div class="col-md-4">
                                 <select class="form-control" name="role">
-                                    <option value="">Select...</option>
+                                    <option value="">--- Select ---</option>
                                     <option value="1">Administrator</option>
                                     <option value="2">User</option>
                                 </select>

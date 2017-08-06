@@ -8,8 +8,11 @@ var UserClass = function () {
             focusInvalid: false, // do not focus the last invalid input
             ignore: "",  // validate all fields including form hidden input
             rules: {
-                name: {
+                first_name: {
                     minlength: 2,
+                    required: true
+                },
+                last_name: {
                     required: true
                 },
                 email: {
@@ -46,7 +49,8 @@ var UserClass = function () {
                     .closest('.form-group').removeClass('has-error'); // set success class to the control group
             },
             submitHandler: function (form) {
-                success1.show();
+                // return false;
+                form[0].submit(); // submit the form
             }
         });
     }
