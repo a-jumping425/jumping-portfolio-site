@@ -31,7 +31,7 @@ class UserController extends Controller {
         $profile = Input::get('profile', 0);
         if( $id ) {  // Update
             $userClass = User::find($id);
-            $userClass->enable = Input::get('enable');
+            $userClass->enabled = Input::get('enabled');
             if (Input::get('password'))
                 $userClass->password = Hash::make( Input::get('password') );
         } else {    // New
@@ -82,6 +82,16 @@ class UserController extends Controller {
         $data['data'] = $rows;
 
         return response()->json($data);
+    }
+
+    /**
+     * Edit user
+     */
+    public function editUser($id) {
+        // Get user
+        $user = User::find($id);
+
+        return view('backend.user.edit', ['user' => $user]);
     }
 
     /**
