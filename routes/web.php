@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user/edit/{id}', 'Backend\UserController@editUser')->where('id', '[0-9]+');
     Route::post('user/save', 'Backend\UserController@saveUser');
     Route::post('user/delete/{id}', 'Backend\UserController@deleteUser')->where('id', '[0-9]+');
+    Route::get('user/profile', 'Backend\UserController@userProfile');
 });
 
 Route::group([], function () {

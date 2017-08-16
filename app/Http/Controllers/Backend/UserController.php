@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller {
     /**
@@ -31,7 +32,8 @@ class UserController extends Controller {
         $profile = Input::get('profile', 0);
         if( $id ) {  // Update
             $userClass = User::find($id);
-            $userClass->enabled = Input::get('enabled');
+            if (Input::get('enabled'))
+                $userClass->enabled = Input::get('enabled');
             if (Input::get('password'))
                 $userClass->password = Hash::make( Input::get('password') );
         } else {    // New
@@ -51,7 +53,8 @@ class UserController extends Controller {
         $userClass->last_name = Input::get('last_name');
         $userClass->username = Input::get('username');
         $userClass->email = Input::get('email');
-        $userClass->user_level = Input::get('role');
+        if (Input::get('role'))
+            $userClass->user_level = Input::get('role');
         $userClass->save();
 
         if ($profile)
@@ -113,5 +116,17 @@ class UserController extends Controller {
         $data = ['result' => 1];
 
         return response()->json($data);
+    }
+
+    /**
+     * User profile
+     */
+    public function userProfile() {
+        $id = Auth::id();
+
+        // Get user
+        $user = User::find($id);
+
+        return view('backend.user.profile', ['user' => $user]);
     }
 }

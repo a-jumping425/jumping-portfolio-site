@@ -102,6 +102,13 @@ return [
                     'icon' => '',
                     'hidden' => 0,
                     'children' => []
+                ], [
+                    'id' => 'profile',
+                    'name' => 'My profile',
+                    'url' => '/user/profile',
+                    'icon' => '',
+                    'hidden' => 0,
+                    'children' => []
                 ]
             ]
         ]
