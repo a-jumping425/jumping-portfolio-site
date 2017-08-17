@@ -23,7 +23,7 @@ class UsersTable extends Migration
             $table->integer('user_level');
             $table->string('avatar')->nullable();
             $table->string('avatar_url')->nullable();
-            $table->boolean('enabled')->default(1);
+            $table->boolean('active')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

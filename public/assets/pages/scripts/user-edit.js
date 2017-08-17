@@ -29,7 +29,7 @@ var UserClass = function () {
                 role: {
                     required: true
                 },
-                enable: {
+                active: {
                     required: true
                 }
             },

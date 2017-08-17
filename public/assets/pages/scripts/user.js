@@ -17,27 +17,24 @@ var UserClass = function () {
                 },
                 {
                     data: 'name',
-                    className: 'text-align-left',
                     width: 150
                 },
                 {
                     data: 'username',
-                    className: 'text-align-left',
                     width: '150'
                 },
                 {
                     data: 'email',
-                    className: 'text-align-left',
                     width: '300'
                 },
                 {
                     data: 'role',
-                    className: 'text-align-left',
+                    className: 'align-center',
                     width: '100'
                 },
                 {
-                    data: 'enabled',
-                    className: 'text-align-center',
+                    data: 'active',
+                    className: 'align-center',
                     width: 80
                 },
                 {

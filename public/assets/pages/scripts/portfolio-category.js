@@ -42,7 +42,7 @@ var PortfolioCategory = function () {
             columns: [
                 {
                     data: 'name',
-                    className: 'reorder text-align-left',
+                    className: 'reorder align-left',
                     width: '20%',
 
                 },

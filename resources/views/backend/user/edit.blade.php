@@ -133,40 +133,22 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Enabled
+                                <label class="control-label col-md-3">Active
                                     <span class="required"> * </span>
                                 </label>
                                 <div class="col-md-4">
                                     <div class="mt-radio-inline">
                                         <label class="mt-radio">
-                                            <input type="radio" name="enabled" id="enable_1" value="1" @if ($user->enabled) checked="" @endif /> Yes
+                                            <input type="radio" name="active" id="active_1" value="1" @if ($user->active) checked="" @endif /> Yes
                                             <span></span>
                                         </label>
                                         <label class="mt-radio">
-                                            <input type="radio" name="enabled" id="enable_2" value="0" @if ($user->enabled == 0) checked="" @endif> No
+                                            <input type="radio" name="active" id="active_2" value="0" @if ($user->active == 0) checked="" @endif> No
                                             <span></span>
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                            <!--div class="form-group">
-                                <label class="control-label col-md-3">Avatar</label>
-                                <div class="col-md-4">
-                                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                            <img src="" alt="" /> </div>
-                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
-                                        <div>
-                                            <span class="btn default btn-file">
-                                                <span class="fileinput-new"> Select image </span>
-                                                <span class="fileinput-exists"> Change </span>
-                                                <input type="file" name="avatar" />
-                                            </span>
-                                            <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> Remove </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div-->
                         </div>
                         <div class="form-actions">
                             <div class="row">

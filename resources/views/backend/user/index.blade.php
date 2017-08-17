@@ -51,7 +51,7 @@
                         <th>Username</th>
                         <th>Email</th>
                         <th>Role</th>
-                        <th>Enabled</th>
+                        <th>Active</th>
                         <th>&nbsp;</th>
                     </tr>
                     </thead>

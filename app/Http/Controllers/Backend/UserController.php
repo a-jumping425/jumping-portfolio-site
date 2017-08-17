@@ -32,8 +32,8 @@ class UserController extends Controller {
         $profile = Input::get('profile', 0);
         if( $id ) {  // Update
             $userClass = User::find($id);
-            if (Input::get('enabled'))
-                $userClass->enabled = Input::get('enabled');
+            if (Input::get('active') !== false)
+                $userClass->active = Input::get('active');
             if (Input::get('password'))
                 $userClass->password = Hash::make( Input::get('password') );
         } else {    // New
@@ -79,7 +79,7 @@ class UserController extends Controller {
                 $row->thumbnail = '<img class="thumbnail" src="'. $row->avatar_url .'" />';
             }
             $row->name = $row->first_name .' '. $row->last_name;
-            $row->enabled = $row->enabled ? '<span class="label label-sm label-success"> Enabled </span>' : '<span class="label label-sm label-danger"> Disabled </span>';
+            $row->active = $row->active ? '<span class="label label-sm label-success"> Yes </span>' : '<span class="label label-sm label-danger"> No </span>';
             $row->role = ($row->user_level == 1) ? ' Administrator ' : ' User ';
         }
         $data['data'] = $rows;
