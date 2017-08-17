@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -45,5 +47,10 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('backend.auth.login');
+    }
+
+    protected function credentials(Request $request)
+    {
+        return array_merge($request->only('email', 'password'), ['active' => 1]);
     }
 }
