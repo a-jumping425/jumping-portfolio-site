@@ -1,11 +1,24 @@
-var VideoClass = function () {
-    var editVideo = function () {
-        var form = $('#form_video_edit');
+var PortfolioClass = function () {
+    var newPortfolio = function () {
+        var form = $('#form_portfolio_edit');
 
-        $('#save_video_butt').click(function (e) {
+        $('#save_portfolio_butt').click(function (e) {
             e.preventDefault();
 
             form.submit();
+        });
+
+        // initialize datepicker
+        $('.date-picker').datepicker({
+            autoclose: true
+        });
+
+        // initialize select2
+        $("#category").select2({
+            placeholder: "Select the categories ..."
+        });
+        $("#tags").select2({
+            placeholder: "Select the tags ..."
         });
 
         form.validate({
@@ -14,13 +27,25 @@ var VideoClass = function () {
             focusInvalid: false, // do not focus the last invalid input
             ignore: "",  // validate all fields including form hidden input
             rules: {
-                name: {
+                title: {
                     minlength: 2,
                     required: true
                 },
-                category: {
+                'category[]': {
                     required: true
-                }
+                },
+                thumbnail: {
+                    required: true
+                },
+                design_level: {
+                    required: true
+                },
+                url: {
+                    required: true
+                },
+                'tags[]': {
+                    required: true
+                },
             },
             errorPlacement: function (error, element) { // render error placement for each input type
             },
@@ -37,37 +62,38 @@ var VideoClass = function () {
                     .closest('.form-group').removeClass('has-error'); // set success class to the control group
             },
             submitHandler: function (form) {
-                var path = $('tr.template-download').attr('data-path');
-                if (!path) {
-                    alert('You must upload video file before to save the video.');
-                    return false;
-                }
-                $('#video_path').val(path);
-                $('#video_name').val($('tr.template-download').attr('data-name'));
-                $('#video_size').val($('tr.template-download').attr('data-size'));
+                // Portfolio files
+                var file_ids = '';
+                $('#portfolio_files tr.template-download').each(function (index) {
+                    var id = $(this).attr('data-id');
+                    if (file_ids)
+                        file_ids += ',' + id;
+                    else
+                        file_ids = id;
+                });
+                $('#portfolio_files').val(file_ids);
 
                 return true;
             }
         });
     }
 
-    var uploadVideo = function () {
+    var uploadPortfolio = function () {
         // Initialize the jQuery File Upload widget:
-        $('#form_video_upload').fileupload({
+        $('#form_portfolio_upload').fileupload({
             disableImageResize: false,
             autoUpload: false,
             disableImageResize: /Android(?!.*Chrome)|Opera/.test(window.navigator.userAgent),
-            maxNumberOfFiles: 1,
-            acceptFileTypes: /(\.|\/)(mp4|mpg|mpeg|avi)$/i
+            acceptFileTypes: /(\.|\/)(mp4|mpg|mpeg|avi|jpg|jpeg|gif|png|bmp)$/i
         }).bind('fileuploadstart', function (e) {
             $('.progress-bar-success').hide();
             $('.progress-bar-success-new').show();
         }).bind('fileuploaddestroy', function (e, data) {
-            return confirm('Are you sure you want to delete this video?');
+            return confirm('Are you sure you want to delete this file?');
         });
 
         // Enable iframe cross-domain access via redirect option:
-        $('#form_video_upload').fileupload(
+        $('#form_portfolio_upload').fileupload(
             'option',
             'redirect',
             window.location.href.replace(
@@ -84,18 +110,18 @@ var VideoClass = function () {
                 $('<div class="alert alert-danger"/>')
                     .text('Upload server currently unavailable - ' +
                         new Date())
-                    .appendTo('#form_video_upload');
+                    .appendTo('#form_portfolio_upload');
             });
         }
 
         // Load & display existing files:
-        $('#form_video_upload').addClass('fileupload-processing');
+        $('#form_portfolio_upload').addClass('fileupload-processing');
         $.ajax({
             // Uncomment the following to send cross-domain cookies:
             //xhrFields: {withCredentials: true},
-            url: '/api/video/uploaded/' + $('#video_id').val(),
+            url: '/portfolio/uploaded_files_api/' + $('#portfolio_id').val(),
             dataType: 'json',
-            context: $('#form_video_upload')[0]
+            context: $('#form_portfolio_upload')[0]
         }).always(function () {
             $(this).removeClass('fileupload-processing');
         }).done(function (result) {
@@ -107,12 +133,12 @@ var VideoClass = function () {
     return {
         // main function to initiate the module
         init: function () {
-            editVideo();
-            uploadVideo();
+            newPortfolio();
+            uploadPortfolio();
         }
     };
 }();
 
 jQuery(document).ready(function() {
-    VideoClass.init();
+    PortfolioClass.init();
 });

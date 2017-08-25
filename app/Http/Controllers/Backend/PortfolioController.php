@@ -87,6 +87,28 @@ class PortfolioController extends Controller {
     }
 
     /**
+     * Edit portfolio
+     */
+    public function editPortfolio($id) {
+        $portfolio = Portfolio::find($id);
+
+        // Featured image
+        $featured_image = Media::find($portfolio->featured_image);
+        $portfolio->thumbnail = url('storage/'. $featured_image->path);
+
+        // Categories
+        $selected_categories = DB::table('portfolio_category_relationships')->where('portfolio_id', $portfolio->id)->pluck('category_id')->toArray();
+
+        // Tags
+        $selected_tags = DB::table('portfolio_tag_relationships')->where('portfolio_id', $portfolio->id)->pluck('tag_id')->toArray();
+
+        $categories = DB::table('portfolio_categories')->orderBy('ordering', 'asc')->get();
+        $tags = DB::table('portfolio_tags')->get();
+
+        return view('backend.portfolio.edit', ['portfolio' => $portfolio, 'categories' => $categories, 'tags' => $tags, 'selected_categories' => $selected_categories, 'selected_tags' => $selected_tags]);
+    }
+
+    /**
      * Save portfolio
      */
     public function savePortfolio(Request $request) {
@@ -202,21 +224,77 @@ class PortfolioController extends Controller {
     }
 
     /**
+     * Delete portfolio
+     */
+    public function deletePortfolio(Request $request, $id) {
+        // Get the portfolio in the database
+        $portfolioObj = Portfolio::find($id);
+
+        // Remove the data in portfolio table
+        Portfolio::destroy($id);
+
+        // Remove featured image
+        $featuredImageObj = Media::find($portfolioObj->featured_image);
+        if (isset($featuredImageObj->id)) {
+            Storage::delete($featuredImageObj->path);
+            $path_parts = pathinfo($featuredImageObj->path);
+            Storage::delete('portfolio_featured_images/'. $path_parts['filename'] .'_400x300.'. $path_parts['extension']);
+
+            Media::destroy($featuredImageObj->id);
+        }
+
+        // Remove files
+        $sql = "SELECT m.*
+                FROM portfolio_media_relationships AS r
+                INNER JOIN media AS m ON m.id=r.`media_id`
+                WHERE r.`portfolio_id` = ?
+                ORDER BY r.`ordering`";
+        $rows = DB::select($sql, [$portfolioObj->id]);
+        foreach ($rows as $row) {
+            Storage::delete($row->path);
+
+            Media::destroy($row->id);
+        }
+
+        // Remove the data in relationships tables
+        DB::table('portfolio_media_relationships')->where('portfolio_id', $portfolioObj->id)->delete();
+        DB::table('portfolio_category_relationships')->where('portfolio_id', $portfolioObj->id)->delete();
+        DB::table('portfolio_tag_relationships')->where('portfolio_id', $portfolioObj->id)->delete();
+
+        // result => 1: success, 0: error
+        $data = ['result' => 1];
+
+        return response()->json($data);
+    }
+
+    /**
      * Uploaded files in API
      */
-    public function uploadedFilesAPI($id) {
+    public function uploadedFilesAPI($portfolio_id) {
         $files = [ 'files' => [] ];
 
-        $files = [];
-        foreach ($files as $file) {
-            $files['files'][] = [
-                'id' => $file->id,
-                'name' => $file->file_name,
-                'size' => $file->file_size,
-                'url' => $file->url,
+        $sql = "SELECT m.*
+                FROM portfolio_media_relationships AS r
+                INNER JOIN media AS m ON m.id=r.`media_id`
+                WHERE r.`portfolio_id` = ?
+                ORDER BY r.`ordering`";
+        $rows = DB::select($sql, [$portfolio_id]);
+
+        foreach ($rows as $row) {
+            $file_data = [
+                'id' => $row->id,
+                'name' => $row->file_name,
+                'size' => $row->file_size,
+                'url' => $row->url,
                 'deleteType' => 'GET',
-                'deleteUrl' => url('/portfolio/delete_file/'. $file->id)
+                'deleteUrl' => url('/portfolio/delete_file?mid='. $row->id .'&pid='. $portfolio_id)
             ];
+            $image_extensions = ['jpg', 'jpeg', 'gif', 'png', 'bmp'];
+            if (in_array(strtolower($row->file_extension), $image_extensions)) {
+                $file_data['is_image'] = 1;
+            }
+
+            $files['files'][] = $file_data;
         }
 
         return response()->json($files);
@@ -236,5 +314,35 @@ class PortfolioController extends Controller {
             $files['files'][] = $file;
 
         return response()->json($files);
+    }
+
+    /**
+     * Delete file
+     */
+    public function deleteFile() {
+        $mid = Input::get('mid', 0);
+        $pid = Input::get('pid', 0);
+
+        // Get data in database
+        $obj = Media::find($mid);
+
+        // Remove file
+        if ($obj->path) {
+            Storage::delete($obj->path);
+        }
+
+        // Remove data in media table
+        Media::destroy($mid);
+
+        // Remove data in portfolio_media_relationships table
+        DB::table('portfolio_media_relationships')
+            ->where('portfolio_id', $pid)
+            ->where('media_id', $mid)
+            ->delete();
+
+        // result => 1: success, 0: error
+        $data = ['result' => 1];
+
+        return response()->json($data);
     }
 }

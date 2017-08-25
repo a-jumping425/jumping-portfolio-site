@@ -16,6 +16,8 @@ class Media extends Model {
     public function uploadPortfolioFile(Request $request) {
         $file_data = [];
 
+        $portfolio_id = $request->get('portfolio_id', 0);
+
         // Upload image
         if ($request->file('portfolio_file')) {
             $path = Storage::putFile('portfolios', $request->file('portfolio_file'));
@@ -40,7 +42,7 @@ class Media extends Model {
                 'url' => $url,
                 'path' => $path,
                 'deleteType' => 'GET',
-                'deleteUrl' => url('/portfolio/delete_file/'. $mediaClass->id)
+                'deleteUrl' => url('/portfolio/delete_file?mid='. $mediaClass->id .'&pid='. $portfolio_id)
             ];
 
             $image_extensions = ['jpg', 'jpeg', 'gif', 'png', 'bmp'];

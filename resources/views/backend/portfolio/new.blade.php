@@ -100,7 +100,7 @@
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                         <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
                                             <img src="" alt="" /> </div>
-                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 250px;"> </div>
                                         <div>
                                         <span class="btn default btn-file">
                                             <span class="fileinput-new"> Select image </span>
@@ -129,6 +129,10 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <label class="control-label">Project url</label>
+                                    <input type="text" name="url" class="form-control" value="" />
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label">Completed Date (Optional)</label>
                                     <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
                                         <input type="text" class="form-control" name="completed_date" readonly>
@@ -142,10 +146,6 @@
                                 <div class="form-group">
                                     <label class="control-label">Client (Optional)</label>
                                     <input type="text" name="client" class="form-control" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Project url (Optional)</label>
-                                    <input type="text" name="url" class="form-control" value="" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Visibility</label>
@@ -199,6 +199,7 @@
                                     </table>
                                 </div>
                             </div>
+                            <input type="hidden" name="portfolio_id" value=""/>
                         </form>
                     </div>
                 </div>

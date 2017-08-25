@@ -40,6 +40,9 @@ var PortfolioClass = function () {
                 design_level: {
                     required: true
                 },
+                url: {
+                    required: true
+                },
                 'tags[]': {
                     required: true
                 },
