@@ -112,6 +112,13 @@ return [
                 ]
             ]
         ]
+    ],
+    'design_levels' => [
+        5 => 'Excellent',
+        4 => 'Good',
+        3 => 'OK',
+        2 => 'Poor',
+        1 => 'Very Poor'
     ]
 ];
 
