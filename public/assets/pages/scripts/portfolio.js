@@ -1,10 +1,10 @@
-var VideoClass = function () {
-    var videoGrid = function() {
+var PortfolioClass = function () {
+    var portfolioGrid = function() {
         $.fn.dataTableExt.oStdClasses.sFilterInput = "form-control input-xs input-sm input-inline";
 
-        var table = $("#datatable_video").DataTable({
+        var table = $("#datatable_portfolio").DataTable({
             ajax: {
-                url: '/video/get_videos_by_user',
+                url: '/portfolio/get_portfolios_api',
                 dataType: 'json',
                 method: 'GET',
                 data: {}
@@ -13,24 +13,25 @@ var VideoClass = function () {
                 {
                     data: 'thumbnail',
                     width: 80,
-                    searchable: false
+                    searchable: false,
+                    className: 'reorder align-left',
                 },
                 {
                     data: 'title',
-                    className: 'text-align-left',
-                    width: '20%'
-
                 },
                 {
-                    data: 'description'
+                    data: 'overview'
                 },
                 {
-                    data: 'visibility',
-                    className: 'text-align-center',
-                    width: 80
+                    data: 'categories',
                 },
                 {
-                    data: 'created_at'
+                    data: 'tags',
+                },
+                {
+                    data: 'design_level',
+                    className: 'align-center',
+                    width: 100
                 },
                 {
                     data: null,
@@ -40,23 +41,32 @@ var VideoClass = function () {
                 }
             ],
             autoWidth: false,
-            paging: false,
+            paging: true,
+            "lengthMenu": [
+                [50, 100, 150, -1],
+                [50, 100, 150, "All"] // change per page values here
+            ],
+            "pageLength": 50, // default record count per page
             ordering: false,
             createdRow: function(row, data, dataIndex) {
                 // $(row).attr('data-id', data.DT_RowData.id);
-                $(row).find('.edit-butt').attr('href', "/video/edit/" + data.DT_RowData.id)
+                $(row).find('.edit-butt').attr('href', "/portfolio/edit/" + data.DT_RowData.id)
+            },
+            rowReorder: {
+                dataSrc: 'id',
+                update: false   // Disable redraw after reorder
             }
         });
 
         // Click "Delete" button
-        $('#datatable_video tbody').on('click', '.delete-butt', function() {
+        $('#datatable_portfolio tbody').on('click', '.delete-butt', function() {
             if( confirm('Are you sure you want to delete selected item?') ) {
                 var id = table.row($(this).parents('tr')).data().id;
                 // table.row($(this).parents('tr')).remove().draw();
                 $.ajax({
                     method: "POST",
-                    url: "/video/delete/" + id,
-                    data: { '_token': $('#form_video input[name="_token"]').val() },
+                    url: "/portfolio/delete/" + id,
+                    data: { '_token': $('#form_portfolio input[name="_token"]').val() },
                     cache: false,
                     success: function(data, textStatus, jqXHR){
                         // console.log('success', data, textStatus, jqXHR);
@@ -70,16 +80,42 @@ var VideoClass = function () {
                 });
             }
         });
+
+        table.on('row-reorder', function(e, diff, edit) {
+            // console.log(diff);
+            var orders = [];
+            for ( var i = 0; i < diff.length; i++ ) {
+                orders[i] = {id: diff[i].oldData, pos: diff[i].newPosition};
+            }
+
+            $.ajax({
+                method: "POST",
+                url: "/portfolio/reorder",
+                data: {
+                    '_token': $('#form_portfolio input[name="_token"]').val(),
+                    orders: orders
+                },
+                cache: false,
+                success: function(data, textStatus, jqXHR){
+                    // console.log(data, textStatus, jqXHR);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    // console.log(jqXHR, textStatus, errorThrown);
+                    alert('Sorry! Occurred some error. Please retry again.');
+                    table.ajax.reload();
+                }
+            });
+        });
     };
 
     return {
         // main function to initiate the module
         init: function () {
-            videoGrid();
+            portfolioGrid();
         }
     };
 }();
 
 jQuery(document).ready(function() {
-    VideoClass.init();
+    PortfolioClass.init();
 });

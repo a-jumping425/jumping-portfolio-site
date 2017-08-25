@@ -20,7 +20,10 @@ Route::middleware(['auth'])->group(function () {
      * Portfolio
      */
     Route::get('portfolios', 'Backend\PortfolioController@showPortfolios');
+    Route::get('portfolio/get_portfolios_api', 'Backend\PortfolioController@getPortfoliosAPI');
+    Route::post('portfolio/reorder', 'Backend\PortfolioController@reorderPortfolio');
     Route::get('portfolio/new', 'Backend\PortfolioController@newPortfolio');
+    Route::get('portfolio/edit/{id}', 'Backend\PortfolioController@editPortfolio')->where('id', '[0-9]+');
     Route::post('portfolio/save', 'Backend\PortfolioController@savePortfolio');
     Route::get('portfolio/uploaded_files_api/{id}', 'Backend\PortfolioController@uploadedFilesAPI')->where('id', '[0-9]+');
     Route::post('portfolio/upload_file', 'Backend\PortfolioController@uploadFile');

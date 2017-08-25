@@ -89,8 +89,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Category</label>
-                                    <select class="form-control" name="category">
-                                        <option value="">Select a category...</option>
+                                    <select class="form-control" name="category[]" id="category" multiple>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach

@@ -14,6 +14,9 @@ var PortfolioClass = function () {
         });
 
         // initialize select2
+        $("#category").select2({
+            placeholder: "Select the categories ..."
+        });
         $("#tags").select2({
             placeholder: "Select the tags ..."
         });
@@ -28,7 +31,7 @@ var PortfolioClass = function () {
                     minlength: 2,
                     required: true
                 },
-                category: {
+                'category[]': {
                     required: true
                 },
                 thumbnail: {

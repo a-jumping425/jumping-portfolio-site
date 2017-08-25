@@ -1,6 +1,12 @@
-#datatable_video .thumbnail {
+#datatable_portfolio .thumbnail {
   max-width: 80px;
   min-width: 50px;
   min-height: 30px;
-  margin-bottom: 0;
+  margin: 0;
+}
+#datatable_portfolio .align-center {
+  text-align: center !important;
+}
+#datatable_portfolio .align-left {
+  text-align: left !important;
 }
