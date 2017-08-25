@@ -84,7 +84,8 @@ var PortfolioClass = function () {
             disableImageResize: false,
             autoUpload: false,
             disableImageResize: /Android(?!.*Chrome)|Opera/.test(window.navigator.userAgent),
-            acceptFileTypes: /(\.|\/)(mp4|mpg|mpeg|avi|jpg|jpeg|gif|png|bmp)$/i
+            // acceptFileTypes: /(\.|\/)(mp4|mpg|mpeg|avi|jpg|jpeg|gif|png|bmp)$/i
+            acceptFileTypes: /(\.|\/)(jpg|jpeg|gif|png|bmp)$/i
         }).bind('fileuploadstart', function (e) {
             $('.progress-bar-success').hide();
             $('.progress-bar-success-new').show();
