@@ -10,7 +10,7 @@
 |
 */
 
-Route::middleware(['auth'])->group(function () {
+Route::group(['prefix' => 'admin_1lkh6x', 'middleware' => ['auth']], function () {
     /**
      * Dashboard
      */
@@ -59,7 +59,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user/profile', 'Backend\UserController@userProfile');
 });
 
-Route::group([], function () {
+Route::group(['prefix' => 'admin_1lkh6x'], function () {
     // Authentication Routes...
     Route::get('login', 'Backend\Auth\LoginController@showLoginForm')->name('login');
     Route::post('login', 'Backend\Auth\LoginController@login');
