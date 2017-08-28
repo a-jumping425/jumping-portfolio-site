@@ -10,6 +10,10 @@
 |
 */
 
+Route::group([], function () {
+    Route::get('/', 'Frontend\HomeController@index');
+});
+
 Route::group(['prefix' => 'admin_1lkh6x', 'middleware' => ['auth']], function () {
     /**
      * Dashboard
