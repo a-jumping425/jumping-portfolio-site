@@ -120,7 +120,7 @@ var PortfolioClass = function () {
         $.ajax({
             // Uncomment the following to send cross-domain cookies:
             //xhrFields: {withCredentials: true},
-            url: '/portfolio/uploaded_files_api/0',
+            url: SITE_URL + '/admin_1lkh6x/portfolio/uploaded_files_api/0',
             dataType: 'json',
             context: $('#form_portfolio_upload')[0]
         }).always(function () {

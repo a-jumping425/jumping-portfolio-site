@@ -4,7 +4,7 @@ return [
         [
             'id' => 'dashboard',
             'name' => 'Dashboard',
-            'url' => '/',
+            'url' => '/admin_1lkh6x',
             'icon' => 'icon-home',
             'hidden' => 0,
             'children' => []
@@ -18,14 +18,14 @@ return [
                 [
                     'id' => 'portfolio_all',
                     'name' => 'All Portfolios',
-                    'url' => '/portfolios',
+                    'url' => '/admin_1lkh6x/portfolios',
                     'icon' => '',
                     'hidden' => 0,
                     'children' => [
                         [
                             'id' => 'portfolio_edit',
                             'name' => 'Edit Portfolio',
-                            'url' => '/portfolio/edit/{id}',
+                            'url' => '/admin_1lkh6x/portfolio/edit/{id}',
                             'icon' => '',
                             'hidden' => 1,
                             'children' => []
@@ -34,21 +34,21 @@ return [
                 ], [
                     'id' => 'portfolio_add',
                     'name' => 'Add Portfolio',
-                    'url' => '/portfolio/new',
+                    'url' => '/admin_1lkh6x/portfolio/new',
                     'icon' => '',
                     'hidden' => 0,
                     'children' => []
                 ], [
                     'id' => 'portfolio_categories',
                     'name' => 'Categories',
-                    'url' => '/portfolio/categories',
+                    'url' => '/admin_1lkh6x/portfolio/categories',
                     'icon' => '',
                     'hidden' => 0,
                     'children' => [
                         [
                             'id' => 'portfolio_category_edit',
                             'name' => 'Edit Category',
-                            'url' => '/portfolio/category/edit/{id}',
+                            'url' => '/admin_1lkh6x/portfolio/category/edit/{id}',
                             'icon' => '',
                             'hidden' => 1,
                             'children' => []
@@ -57,14 +57,14 @@ return [
                 ], [
                     'id' => 'portfolio_tag',
                     'name' => 'Tags',
-                    'url' => '/portfolio/tags',
+                    'url' => '/admin_1lkh6x/portfolio/tags',
                     'icon' => '',
                     'hidden' => 0,
                     'children' => [
                         [
                             'id' => 'portfolio_tag_edit',
                             'name' => 'Edit Tag',
-                            'url' => '/portfolio/tag/edit/{id}',
+                            'url' => '/admin_1lkh6x/portfolio/tag/edit/{id}',
                             'icon' => '',
                             'hidden' => 1,
                             'children' => []
@@ -82,14 +82,14 @@ return [
                 [
                     'id' => 'user_all',
                     'name' => 'All Users',
-                    'url' => '/users',
+                    'url' => '/admin_1lkh6x/users',
                     'icon' => '',
                     'hidden' => 0,
                     'children' => [
                         [
                             'id' => 'user_edit',
                             'name' => 'Edit User',
-                            'url' => '/user/edit/{id}',
+                            'url' => '/admin_1lkh6x/user/edit/{id}',
                             'icon' => '',
                             'hidden' => 1,
                             'children' => []
@@ -98,14 +98,14 @@ return [
                 ], [
                     'id' => 'user_add',
                     'name' => 'Add User',
-                    'url' => '/user/new',
+                    'url' => '/admin_1lkh6x/user/new',
                     'icon' => '',
                     'hidden' => 0,
                     'children' => []
                 ], [
                     'id' => 'profile',
                     'name' => 'My profile',
-                    'url' => '/user/profile',
+                    'url' => '/admin_1lkh6x/user/profile',
                     'icon' => '',
                     'hidden' => 0,
                     'children' => []

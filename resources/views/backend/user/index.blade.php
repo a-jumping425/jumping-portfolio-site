@@ -3,21 +3,21 @@
 @section('title', 'All users')
 
 @section('page_level_plugins_css')
-    <link href="/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url('/') }}/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('page_level_plugins_js')
-    <script src="/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-    <script src="/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
-    <script src="/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+    <script src="{{ url('/') }}/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="{{ url('/') }}/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+    <script src="{{ url('/') }}/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
 @endsection
 
 @section('page_level_css')
-    <link href="/assets/pages/css/user.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url('/') }}/assets/pages/css/user.css" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('page_level_js')
-    <script src="/assets/pages/scripts/user.js" type="text/javascript"></script>
+    <script src="{{ url('/') }}/assets/pages/scripts/user.js" type="text/javascript"></script>
 @endsection
 
 @section('content')
@@ -26,7 +26,7 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="{{ url('/') }}">Home</a>
+                <a href="{{ url('/admin_1lkh6x/') }}">Home</a>
                 <i class="fa fa-circle"></i>
             </li>
             <li>

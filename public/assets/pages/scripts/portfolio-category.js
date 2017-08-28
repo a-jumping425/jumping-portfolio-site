@@ -34,7 +34,7 @@ var PortfolioCategory = function () {
 
         var table = $("#datatable_category").DataTable({
             ajax: {
-                url: '/api/portfolio/get_categories',
+                url: SITE_URL + '/api/portfolio/get_categories',
                 dataType: 'json',
                 method: 'POST',
                 data: {}
@@ -64,7 +64,7 @@ var PortfolioCategory = function () {
             ordering: false,
             createdRow: function(row, data, dataIndex) {
                 // $(row).attr('data-id', data.DT_RowData.id);
-                $(row).find('.edit-butt').attr('href', "/portfolio/category/edit/" + data.DT_RowData.id)
+                $(row).find('.edit-butt').attr('href', SITE_URL + '/admin_1lkh6x/portfolio/category/edit/' + data.DT_RowData.id)
             },
             rowReorder: {
                 dataSrc: 'id',
@@ -79,7 +79,7 @@ var PortfolioCategory = function () {
                 // table.row($(this).parents('tr')).remove().draw();
                 $.ajax({
                     method: "POST",
-                    url: "/portfolio/category/delete/" + id,
+                    url: SITE_URL + '/admin_1lkh6x/portfolio/category/delete/' + id,
                     data: { '_token': $('#form_portfolio_category input[name="_token"]').val() },
                     cache: false,
                     success: function(data, textStatus, jqXHR){
@@ -104,7 +104,7 @@ var PortfolioCategory = function () {
 
             $.ajax({
                 method: "POST",
-                url: "/portfolio/category/reorder",
+                url: SITE_URL + '/admin_1lkh6x/portfolio/category/reorder',
                 data: {
                     '_token': $('#form_portfolio_category input[name="_token"]').val(),
                     orders: orders

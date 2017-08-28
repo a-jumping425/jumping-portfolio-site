@@ -3,16 +3,16 @@
 @section('title', 'Edit portfolio category')
 
 @section('page_level_plugins_css')
-<link href="/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+<link href="{{ url('/') }}/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('page_level_plugins_js')
-<script src="/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-<script src="/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+<script src="{{ url('/') }}/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="{{ url('/') }}/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
 @endsection
 
 @section('page_level_js')
-<script src="/assets/pages/scripts/portfolio-category-edit.js" type="text/javascript"></script>
+<script src="{{ url('/') }}/assets/pages/scripts/portfolio-category-edit.js" type="text/javascript"></script>
 @endsection
 
 @section('content')
@@ -21,15 +21,15 @@
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
-            <a href="{{ url('/') }}">Home</a>
+            <a href="{{ url('/admin_1lkh6x/') }}">Home</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{ url('/portfolios') }}">Portfolios</a>
+            <a href="{{ url('/admin_1lkh6x/portfolios') }}">Portfolios</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{ url('/portfolio/categories') }}">Categories</a>
+            <a href="{{ url('/admin_1lkh6x/portfolio/categories') }}">Categories</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <form id="form_portfolio_category" action="/portfolio/category/save" method="post">
+                <form id="form_portfolio_category" action="{{ url('admin_1lkh6x/portfolio/category/save') }}" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label class="control-label">Name</label>

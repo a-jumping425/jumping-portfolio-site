@@ -58,9 +58,9 @@ class UserController extends Controller {
         $userClass->save();
 
         if ($profile)
-            return redirect('user/profile');
+            return redirect('admin_1lkh6x/user/profile');
         else
-            return redirect('users');
+            return redirect('admin_1lkh6x/users');
     }
 
     /**

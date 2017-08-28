@@ -42,7 +42,7 @@ class Media extends Model {
                 'url' => $url,
                 'path' => $path,
                 'deleteType' => 'GET',
-                'deleteUrl' => url('/portfolio/delete_file?mid='. $mediaClass->id .'&pid='. $portfolio_id)
+                'deleteUrl' => url('/admin_1lkh6x/portfolio/delete_file?mid='. $mediaClass->id .'&pid='. $portfolio_id)
             ];
 
             $image_extensions = ['jpg', 'jpeg', 'gif', 'png', 'bmp'];

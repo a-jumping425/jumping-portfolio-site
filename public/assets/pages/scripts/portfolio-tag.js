@@ -35,7 +35,7 @@ var PortfolioTag = function () {
 
         var table = $("#datatable_tag").DataTable({
             ajax: {
-                url: '/api/portfolio/get_tags',
+                url: SITE_URL + '/api/portfolio/get_tags',
                 dataType: 'json',
                 method: 'post',
                 data: {}
@@ -71,7 +71,7 @@ var PortfolioTag = function () {
             pagingType: "bootstrap_full_number",
             createdRow: function(row, data, dataIndex) {
                 // $(row).attr('data-id', data.DT_RowData.id);
-                $(row).find('.edit-butt').attr('href', "/portfolio/tag/edit/" + data.id)
+                $(row).find('.edit-butt').attr('href', SITE_URL + '/admin_1lkh6x/portfolio/tag/edit/' + data.id)
             },
         });
 
@@ -82,7 +82,7 @@ var PortfolioTag = function () {
                 // table.row($(this).parents('tr')).remove().draw();
                 $.ajax({
                     method: "POST",
-                    url: "/portfolio/tag/delete/" + id,
+                    url: SITE_URL + '/admin_1lkh6x/portfolio/tag/delete/' + id,
                     data: { '_token': $('#form_portfolio_tag input[name="_token"]').val() },
                     cache: false,
                     success: function(data, textStatus, jqXHR){

@@ -3,20 +3,20 @@
 @section('title', 'Edit User')
 
 @section('page_level_plugins_css')
-    <link href="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url('/') }}/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('page_level_css')
 @endsection
 
 @section('page_level_plugins_js')
-    <script src="/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-    <script src="/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
-    <script src="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+    <script src="{{ url('/') }}/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="{{ url('/') }}/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+    <script src="{{ url('/') }}/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
 @endsection
 
 @section('page_level_js')
-    <script src="/assets/pages/scripts/user-edit.js" type="text/javascript"></script>
+    <script src="{{ url('/') }}/assets/pages/scripts/user-edit.js" type="text/javascript"></script>
 @endsection
 
 @section('content')
@@ -25,11 +25,11 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="{{ url('/') }}">Home</a>
+                <a href="{{ url('/admin_1lkh6x/') }}">Home</a>
                 <i class="fa fa-circle"></i>
             </li>
             <li>
-                <a href="{{ url('/user') }}">User</a>
+                <a href="{{ url('/admin_1lkh6x/user') }}">User</a>
                 <i class="fa fa-circle"></i>
             </li>
             <li>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="portlet-body">
                     <!-- BEGIN FORM-->
-                    <form action="/user/save" id="form_user_edit" method="post" class="form-horizontal" enctype="multipart/form-data">
+                    <form action="{{ url('admin_1lkh6x/user/save') }}" id="form_user_edit" method="post" class="form-horizontal" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-body">
                             <div class="form-group">

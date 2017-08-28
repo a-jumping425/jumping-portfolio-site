@@ -4,7 +4,7 @@ var UserClass = function () {
 
         var table = $("#datatable_user").DataTable({
             ajax: {
-                url: '/user/get_users',
+                url: SITE_URL + '/admin_1lkh6x/user/get_users',
                 dataType: 'json',
                 method: 'get',
                 data: {}
@@ -48,7 +48,7 @@ var UserClass = function () {
             ordering: false,
             createdRow: function(row, data, dataIndex) {
                 // $(row).attr('data-id', data.DT_RowData.id);
-                $(row).find('.edit-butt').attr('href', "/user/edit/" + data.DT_RowData.id)
+                $(row).find('.edit-butt').attr('href', SITE_URL + '/admin_1lkh6x/user/edit/' + data.DT_RowData.id)
             }
         });
 
@@ -59,7 +59,7 @@ var UserClass = function () {
                 // table.row($(this).parents('tr')).remove().draw();
                 $.ajax({
                     method: "POST",
-                    url: "/user/delete/" + id,
+                    url: SITE_URL + '/admin_1lkh6x/user/delete/' + id,
                     data: { '_token': $('#form_user input[name="_token"]').val() },
                     cache: false,
                     success: function(data, textStatus, jqXHR){

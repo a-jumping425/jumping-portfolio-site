@@ -31,7 +31,7 @@ class PortfolioTagController extends Controller {
         $tagClass->description = Input::get('description');
         $tagClass->save();
 
-        return redirect('portfolio/tags');
+        return redirect('admin_1lkh6x/portfolio/tags');
     }
 
     /**

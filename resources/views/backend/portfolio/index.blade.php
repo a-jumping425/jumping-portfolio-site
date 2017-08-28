@@ -28,7 +28,7 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="{{ url('/') }}">Home</a>
+                <a href="{{ url('/admin_1lkh6x/') }}">Home</a>
                 <i class="fa fa-circle"></i>
             </li>
             <li>
@@ -52,6 +52,7 @@
                         <th>Title</th>
                         <th>Overview</th>
                         <th>Categories</th>
+                        <th>Url</th>
                         <th>Tags</th>
                         <th>Design Level</th>
                         <th>&nbsp;</th>

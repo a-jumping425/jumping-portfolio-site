@@ -220,7 +220,7 @@ class PortfolioController extends Controller {
             ->whereIn('tag_id', $diff_tag_ids)
             ->delete();
 
-        return redirect('portfolios');
+        return redirect('admin_1lkh6x/portfolios');
     }
 
     /**
@@ -287,7 +287,7 @@ class PortfolioController extends Controller {
                 'size' => $row->file_size,
                 'url' => $row->url,
                 'deleteType' => 'GET',
-                'deleteUrl' => url('/portfolio/delete_file?mid='. $row->id .'&pid='. $portfolio_id)
+                'deleteUrl' => url('/admin_1lkh6x/portfolio/delete_file?mid='. $row->id .'&pid='. $portfolio_id)
             ];
             $image_extensions = ['jpg', 'jpeg', 'gif', 'png', 'bmp'];
             if (in_array(strtolower($row->file_extension), $image_extensions)) {

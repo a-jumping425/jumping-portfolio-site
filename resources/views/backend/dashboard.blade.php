@@ -8,7 +8,7 @@
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
-            <a href="{{ url('/') }}">Home</a>
+            <a href="{{ url('/admin_1lkh6x/') }}">Home</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
