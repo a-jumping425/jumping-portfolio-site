@@ -691,7 +691,9 @@ body.page-header-fixed {
 /* Top Search */
 .header-navigation li.menu-search {
 	position: relative;
-	top: 26px;
+}
+.header-navigation li.menu-search .search-icon-container {
+	padding: 26px 0 25px 0;
 }
 .header-navigation li.menu-search span.sep {
 	top: 0;
@@ -1442,6 +1444,7 @@ Pre-Footer and pre-footer elements
 }
 .pre-footer .container {
 	padding-top: 45px;
+	padding-bottom: 20px;
 }
 .pre-footer a {
 	color: #57c8eb;
