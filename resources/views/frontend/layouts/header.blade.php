@@ -60,33 +60,14 @@
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="index.html"><img src="assets/corporate/img/logos/logo-corp-red.png" alt="Metronic FrontEnd"></a>
+        <a class="site-logo" href="{{ url('/') }}"><img src="{{ url('/') }}/assets/corporate/img/logos/logo-corp-red.png" alt="Metronic FrontEnd"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
         <!-- BEGIN NAVIGATION -->
         <div class="header-navigation pull-right font-transform-inherit">
             <ul>
-                <li class="active">
-                    <a class="" href="{{ url('/') }}">
-                        Home
-                    </a>
-                </li>
-                <li class="">
-                    <a class="" href="{{ url('/about-us') }}">
-                        About Us
-                    </a>
-                </li>
-                <li class="">
-                    <a class="" href="{{ url('/portfolio') }}">
-                        Our Work
-                    </a>
-                </li>
-                <li class="">
-                    <a class="" href="{{ url('/contact') }}">
-                        Contact
-                    </a>
-                </li>
+                {!! $top_menus !!}
 
                 <!-- BEGIN TOP SEARCH -->
                 <li class="menu-search">

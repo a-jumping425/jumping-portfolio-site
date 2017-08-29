@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Backend\SidebarMenu;
+use App\Models\Frontend\TopMenu;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -20,6 +21,13 @@ class AppServiceProvider extends ServiceProvider
             $sidebarMenu = new SidebarMenu();
             $menus = $sidebarMenu->getHtmlOfMenus();
             $view->with('sidebar_menus', $menus);
+        });
+
+        View::composer('frontend.layouts.header', function ($view) {
+            // Get frontend top menus
+            $topMenu = new TopMenu();
+            $menus = $topMenu->getHtmlOfMenus();
+            $view->with('top_menus', $menus);
         });
     }
 

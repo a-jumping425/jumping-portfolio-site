@@ -113,12 +113,45 @@ return [
             ]
         ]
     ],
+
     'design_levels' => [
         5 => 'Excellent',
         4 => 'Good',
         3 => 'OK',
         2 => 'Poor',
         1 => 'Very Poor'
+    ],
+
+    'top_menus' => [
+        [
+            'id' => 'home',
+            'name' => 'Home',
+            'url' => '/',
+            'icon' => '',
+            'hidden' => 0,
+            'children' => []
+        ], [
+            'id' => 'about',
+            'name' => 'About Us',
+            'url' => '/about-us',
+            'icon' => '',
+            'hidden' => 0,
+            'children' => []
+        ], [
+            'id' => 'portfolio',
+            'name' => 'Portfolio',
+            'url' => '/portfolio',
+            'icon' => '',
+            'hidden' => 0,
+            'children' => []
+        ], [
+            'id' => 'contact',
+            'name' => 'Contact',
+            'url' => '/contact',
+            'icon' => '',
+            'hidden' => 0,
+            'children' => []
+        ]
     ]
 ];
 
