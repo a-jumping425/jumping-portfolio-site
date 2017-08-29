@@ -40,7 +40,7 @@
             <h3>Oops! You're lost.</h3>
             <p> We can not find the page you're looking for.
                 <br/>
-                <a href="{{ url('/admin_1lkh6x/') }}"> Return home </a> or try the search bar below. </p>
+                <a href="{{ url('/') }}"> Return home </a> or try the search bar below. </p>
             <form action="#">
                 <div class="input-group input-medium">
                     <input type="text" class="form-control" placeholder="keyword...">

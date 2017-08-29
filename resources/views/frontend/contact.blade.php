@@ -13,7 +13,7 @@
     <script src="{{ url('/') }}/assets/global/plugins/gmaps/gmaps.js" type="text/javascript"></script>
     <script src="{{ url('/') }}/assets/pages/scripts/contact-us.js" type="text/javascript"></script>
 
-    <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+    <script src="{{ url('/') }}/assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
             Layout.init();

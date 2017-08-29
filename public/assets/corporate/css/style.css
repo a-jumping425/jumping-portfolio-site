@@ -14,7 +14,7 @@ body {
 General typography 
 ***/
 h1, h2, h3, h4, h5, h6 {
-	font: 300 'Open Sans', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	margin: 0 0 10px;
 }
 h1 {
@@ -436,7 +436,7 @@ Header and header elements
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 99999;
+	z-index: 10000;
 }
 body.page-header-fixed {
 	padding-top: 88px !important; /* height of the header */
@@ -3098,3 +3098,60 @@ Styler Panel
 	height: 36px;
 	text-transform: uppercase;
 	padding: 7px 16px; }
+
+.uppercase {
+	text-transform: uppercase !important;
+}
+
+.btn:not(.btn-sm):not(.btn-lg) {
+	line-height: 1.44; }
+
+.btn.red:not(.btn-outline) {
+	color: #ffffff;
+	background-color: #e7505a;
+	border-color: #e7505a; }
+.btn.red:not(.btn-outline):focus, .btn.red:not(.btn-outline).focus {
+	color: #ffffff;
+	background-color: #e12330;
+	border-color: #a1161f; }
+.btn.red:not(.btn-outline):hover {
+	color: #ffffff;
+	background-color: #e12330;
+	border-color: #dc1e2b; }
+.btn.red:not(.btn-outline):active, .btn.red:not(.btn-outline).active,
+.open > .btn.red:not(.btn-outline).dropdown-toggle {
+	color: #ffffff;
+	background-color: #e12330;
+	border-color: #dc1e2b; }
+.btn.red:not(.btn-outline):active:hover, .btn.red:not(.btn-outline):active:focus, .btn.red:not(.btn-outline):active.focus, .btn.red:not(.btn-outline).active:hover, .btn.red:not(.btn-outline).active:focus, .btn.red:not(.btn-outline).active.focus,
+.open > .btn.red:not(.btn-outline).dropdown-toggle:hover,
+.open > .btn.red:not(.btn-outline).dropdown-toggle:focus,
+.open > .btn.red:not(.btn-outline).dropdown-toggle.focus {
+	color: #ffffff;
+	background-color: #c51b26;
+	border-color: #a1161f; }
+.btn.red:not(.btn-outline):active, .btn.red:not(.btn-outline).active,
+.open > .btn.red:not(.btn-outline).dropdown-toggle {
+	background-image: none; }
+.btn.red:not(.btn-outline).disabled:hover, .btn.red:not(.btn-outline).disabled:focus, .btn.red:not(.btn-outline).disabled.focus, .btn.red:not(.btn-outline)[disabled]:hover, .btn.red:not(.btn-outline)[disabled]:focus, .btn.red:not(.btn-outline)[disabled].focus,
+fieldset[disabled] .btn.red:not(.btn-outline):hover,
+fieldset[disabled] .btn.red:not(.btn-outline):focus,
+fieldset[disabled] .btn.red:not(.btn-outline).focus {
+	background-color: #e7505a;
+	border-color: #e7505a; }
+.btn.red:not(.btn-outline) .badge {
+	color: #e7505a;
+	background-color: #ffffff; }
+
+.btn.btn-outline.red {
+	border-color: #e7505a;
+	color: #e7505a;
+	background: none; }
+.btn.btn-outline.red:hover, .btn.btn-outline.red:active, .btn.btn-outline.red:active:hover, .btn.btn-outline.red:active:focus, .btn.btn-outline.red:focus, .btn.btn-outline.red.active {
+	border-color: #e7505a;
+	color: #ffffff;
+	background-color: #e7505a; }
+
+.cbp-l-filters-button .cbp-filter-counter:after {
+	border-top: 4px solid #e7505a;
+}

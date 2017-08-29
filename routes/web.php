@@ -13,6 +13,7 @@
 Route::group([], function () {
     Route::get('/', 'Frontend\HomeController@index');
     Route::get('contact', 'Frontend\ContactController@index');
+    Route::get('portfolio', 'Frontend\PortfolioController@index');
 });
 
 Route::group(['prefix' => 'admin_1lkh6x', 'middleware' => ['auth']], function () {

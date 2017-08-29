@@ -39,6 +39,10 @@
     @yield('page_level_plugins_css')
     <!-- Page level plugin styles END -->
 
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    @yield('page_level_css')
+    <!-- END PAGE LEVEL STYLES -->
+
     <!-- Theme styles START -->
     <link href="{{ url('/') }}/assets/pages/css/components.css" rel="stylesheet">
     <link href="{{ url('/') }}/assets/pages/css/slider.css" rel="stylesheet">
@@ -64,22 +68,22 @@
         <div class="header-navigation pull-right font-transform-inherit">
             <ul>
                 <li class="active">
-                    <a class="" href="javascript:;">
+                    <a class="" href="{{ url('/') }}">
                         Home
                     </a>
                 </li>
                 <li class="">
-                    <a class="" href="javascript:;">
+                    <a class="" href="{{ url('/about-us') }}">
                         About Us
                     </a>
                 </li>
                 <li class="">
-                    <a class="" href="javascript:;">
-                        Projects
+                    <a class="" href="{{ url('/portfolio') }}">
+                        Our Work
                     </a>
                 </li>
                 <li class="">
-                    <a class="" href="javascript:;">
+                    <a class="" href="{{ url('/contact') }}">
                         Contact
                     </a>
                 </li>
