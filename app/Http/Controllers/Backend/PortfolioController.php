@@ -7,6 +7,7 @@ use App\Models\Backend\Portfolio;
 use App\Models\Backend\PortfolioCategoryRelationships;
 use App\Models\Backend\PortfolioMediaRelationships;
 use App\Models\Backend\PortfolioTagRelationships;
+use App\Models\Backend\PortfolioTechnologyRelationships;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -82,8 +83,9 @@ class PortfolioController extends Controller {
     public function newPortfolio() {
         $categories = DB::table('portfolio_categories')->orderBy('ordering', 'asc')->get();
         $tags = DB::table('portfolio_tags')->get();
+        $technologies = DB::table('portfolio_technologies')->get();
 
-        return view('backend.portfolio.new', ['categories' => $categories, 'tags' => $tags]);
+        return view('backend.portfolio.new', ['categories' => $categories, 'tags' => $tags, 'technologies' => $technologies]);
     }
 
     /**
@@ -102,10 +104,14 @@ class PortfolioController extends Controller {
         // Tags
         $selected_tags = DB::table('portfolio_tag_relationships')->where('portfolio_id', $portfolio->id)->pluck('tag_id')->toArray();
 
+        // Technologies
+        $selected_technologies = DB::table('portfolio_technology_relationships')->where('portfolio_id', $portfolio->id)->pluck('tech_id')->toArray();
+
         $categories = DB::table('portfolio_categories')->orderBy('ordering', 'asc')->get();
         $tags = DB::table('portfolio_tags')->get();
+        $technologies = DB::table('portfolio_technologies')->get();
 
-        return view('backend.portfolio.edit', ['portfolio' => $portfolio, 'categories' => $categories, 'tags' => $tags, 'selected_categories' => $selected_categories, 'selected_tags' => $selected_tags]);
+        return view('backend.portfolio.edit', ['portfolio' => $portfolio, 'categories' => $categories, 'tags' => $tags, 'technologies' => $technologies, 'selected_categories' => $selected_categories, 'selected_tags' => $selected_tags, 'selected_technologies' => $selected_technologies]);
     }
 
     /**
@@ -220,6 +226,27 @@ class PortfolioController extends Controller {
             ->whereIn('tag_id', $diff_tag_ids)
             ->delete();
 
+        /**
+         * Save technology relationships
+         */
+        $technology_ids = Input::get('technologies');
+        $exist_technology_ids = DB::table('portfolio_technology_relationships')->where('portfolio_id', $portfolioClass->id)->pluck('tech_id')->toArray();
+        // Add new technologies
+        $diff_technology_ids = array_diff($technology_ids, $exist_technology_ids);
+        foreach ($diff_technology_ids as $tid) {
+            $TRClass = new PortfolioTechnologyRelationships();
+            $TRClass->portfolio_id = $portfolioClass->id;
+            $TRClass->tech_id = $tid;
+            $TRClass->ordering = 999999;
+            $TRClass->save();
+        }
+        // Remove deleted technologies
+        $diff_technology_ids = array_diff($exist_technology_ids, $technology_ids);
+        DB::table('portfolio_technology_relationships')
+            ->where('portfolio_id', $portfolioClass->id)
+            ->whereIn('tech_id', $diff_technology_ids)
+            ->delete();
+
         return redirect('admin_1lkh6x/portfolios');
     }
 
@@ -260,6 +287,7 @@ class PortfolioController extends Controller {
         DB::table('portfolio_media_relationships')->where('portfolio_id', $portfolioObj->id)->delete();
         DB::table('portfolio_category_relationships')->where('portfolio_id', $portfolioObj->id)->delete();
         DB::table('portfolio_tag_relationships')->where('portfolio_id', $portfolioObj->id)->delete();
+        DB::table('portfolio_technology_relationships')->where('portfolio_id', $portfolioObj->id)->delete();
 
         // result => 1: success, 0: error
         $data = ['result' => 1];

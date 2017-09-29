@@ -1,6 +1,6 @@
-var PortfolioTag = function () {
-    var saveTag = function () {
-        var form = $('#form_portfolio_tag');
+var PortfolioTechnology = function () {
+    var saveTechnology = function () {
+        var form = $('#form_portfolio_technology');
 
         form.validate({
             errorElement: 'span', //default input error message container
@@ -29,13 +29,13 @@ var PortfolioTag = function () {
         });
     };
 
-    var tagGrid = function() {
+    var technologyGrid = function() {
         $.fn.dataTableExt.oStdClasses.sFilterInput = "form-control input-xs input-sm input-inline";
         $.fn.dataTableExt.oStdClasses.sLengthSelect = "form-control input-xs input-sm input-inline";
 
-        var table = $("#datatable_tag").DataTable({
+        var table = $("#datatable_technology").DataTable({
             ajax: {
-                url: SITE_URL + '/api/portfolio/get_tags',
+                url: SITE_URL + '/api/portfolio/get_technologies',
                 dataType: 'json',
                 method: 'post',
                 data: {}
@@ -71,19 +71,19 @@ var PortfolioTag = function () {
             pagingType: "bootstrap_full_number",
             createdRow: function(row, data, dataIndex) {
                 // $(row).attr('data-id', data.DT_RowData.id);
-                $(row).find('.edit-butt').attr('href', SITE_URL + '/admin_1lkh6x/portfolio/tag/edit/' + data.id)
+                $(row).find('.edit-butt').attr('href', SITE_URL + '/admin_1lkh6x/portfolio/technology/edit/' + data.id)
             },
         });
 
         // Click "Delete" button
-        $('#datatable_tag tbody').on('click', '.delete-butt', function() {
+        $('#datatable_technology tbody').on('click', '.delete-butt', function() {
             if( confirm('Are you sure you want to delete selected item?') ) {
                 var id = table.row($(this).parents('tr')).data().id;
                 // table.row($(this).parents('tr')).remove().draw();
                 $.ajax({
                     method: "POST",
-                    url: SITE_URL + '/admin_1lkh6x/portfolio/tag/delete/' + id,
-                    data: { '_token': $('#form_portfolio_tag input[name="_token"]').val() },
+                    url: SITE_URL + '/admin_1lkh6x/portfolio/technology/delete/' + id,
+                    data: { '_token': $('#form_portfolio_technology input[name="_token"]').val() },
                     cache: false,
                     success: function(data, textStatus, jqXHR){
                         // console.log('success', data, textStatus, jqXHR);
@@ -102,12 +102,12 @@ var PortfolioTag = function () {
     return {
         // main function to initiate the module
         init: function () {
-            saveTag();
-            tagGrid();
+            saveTechnology();
+            technologyGrid();
         }
     };
 }();
 
 jQuery(document).ready(function() {
-    PortfolioTag.init();
+    PortfolioTechnology.init();
 });

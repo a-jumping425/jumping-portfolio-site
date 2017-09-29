@@ -21,4 +21,6 @@ Route::post('portfolio/get_categories', 'Api\PortfolioCategoryController@getCate
 
 Route::post('portfolio/get_tags', 'Api\PortfolioTagController@getTags');
 
+Route::post('portfolio/get_technologies', 'Api\PortfolioTechnologyController@getTechnologies');
+
 Route::get('portfolio/loadmore', 'Api\PortfolioController@loadMore');

@@ -120,6 +120,14 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <label class="control-label">Technologies</label>
+                                    <select class="form-control" name="technologies[]" id="technologies" multiple="multiple">
+                                        @foreach($technologies as $tech)
+                                            <option value="{{ $tech->id }}">{{ $tech->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label">Design level</label>
                                     <select class="form-control" style="width: 250px;" name="design_level">
                                         <option value="">Select a design level ...</option>

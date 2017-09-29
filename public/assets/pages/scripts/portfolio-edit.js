@@ -20,6 +20,9 @@ var PortfolioClass = function () {
         $("#tags").select2({
             placeholder: "Select the tags ..."
         });
+        $("#technologies").select2({
+            placeholder: "Select the technologies ..."
+        });
 
         form.validate({
             errorElement: 'span', //default input error message container
@@ -43,6 +46,9 @@ var PortfolioClass = function () {
                 'tags[]': {
                     required: true
                 },
+                'technologies[]': {
+                    required: true
+                }
             },
             errorPlacement: function (error, element) { // render error placement for each input type
             },

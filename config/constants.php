@@ -70,6 +70,22 @@ return [
                             'children' => []
                         ]
                     ]
+                ], [
+                    'id' => 'portfolio_technology',
+                    'name' => 'Technologies',
+                    'url' => '/admin_1lkh6x/portfolio/technologies',
+                    'icon' => '',
+                    'hidden' => 0,
+                    'children' => [
+                        [
+                            'id' => 'portfolio_technology_edit',
+                            'name' => 'Edit Technology',
+                            'url' => '/admin_1lkh6x/portfolio/technology/edit/{id}',
+                            'icon' => '',
+                            'hidden' => 1,
+                            'children' => []
+                        ]
+                    ]
                 ]
             ]
         ], [

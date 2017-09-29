@@ -128,6 +128,18 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <label class="control-label">Technologies</label>
+                                    <select class="form-control" name="technologies[]" id="technologies" multiple="multiple">
+                                        @foreach($technologies as $tech)
+                                            @if (in_array($tech->id, $selected_technologies))
+                                                <option value="{{ $tech->id }}" selected>{{ $tech->name }}</option>
+                                            @else
+                                                <option value="{{ $tech->id }}">{{ $tech->name }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label">Design level</label>
                                     <select class="form-control" style="width: 250px;" name="design_level">
                                         <option value="">Select a design level ...</option>

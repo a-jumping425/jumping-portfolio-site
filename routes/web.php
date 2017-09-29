@@ -55,6 +55,14 @@ Route::group(['prefix' => 'admin_1lkh6x', 'middleware' => ['auth']], function ()
     Route::get('portfolio/tag/edit/{id}', 'Backend\PortfolioTagController@editTag')->where('id', '[0-9]+');
 
     /**
+     * Portfolio technology
+     */
+    Route::get('portfolio/technologies', 'Backend\PortfolioTechnologyController@showTechnologies');
+    Route::post('portfolio/technology/save', 'Backend\PortfolioTechnologyController@saveTechnology');
+    Route::post('portfolio/technology/delete/{id}', 'Backend\PortfolioTechnologyController@deleteTechnology')->where('id', '[0-9]+');
+    Route::get('portfolio/technology/edit/{id}', 'Backend\PortfolioTechnologyController@editTechnology')->where('id', '[0-9]+');
+
+    /**
      * User
      */
     Route::get('users', 'Backend\UserController@showUsers');
