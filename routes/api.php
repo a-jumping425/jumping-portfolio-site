@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('portfolio/get_categories', 'Api\PortfolioCategoryController@getCategories');
 
 Route::post('portfolio/get_tags', 'Api\PortfolioTagController@getTags');
+
+Route::get('portfolio/loadmore', 'Api\PortfolioController@loadMore');
