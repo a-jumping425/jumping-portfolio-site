@@ -85,6 +85,20 @@ class PortfolioController extends Controller {
             else
                 $tag_names = $p_tag->name;
         }
+
+        // Get technologies
+        $sql = "SELECT t.name, t.`slug`
+                    FROM portfolio_technologies AS t
+                    INNER JOIN portfolio_technology_relationships AS tr ON tr.`tech_id`=t.`id`
+                    WHERE tr.`portfolio_id` = ?";
+        $p_technologies = DB::select($sql, [$portfolio->id]);
+        $tech_names = '';
+        foreach($p_technologies as $p_tech) {
+            if ($tech_names)
+                $tech_names .= ', '. $p_tech->name;
+            else
+                $tech_names = $p_tech->name;
+        }
         ?>
         <div class="portfolio-content">
             <div class="cbp-l-project-title"><?php echo $portfolio->title; ?></div>
@@ -127,6 +141,7 @@ class PortfolioController extends Controller {
                         ?>
                         <li><strong>Categories</strong><?php echo $category_names; ?></li>
                         <li><strong>Tags</strong><?php echo $tag_names; ?></li>
+                        <li><strong>Technologies</strong><?php echo $tech_names; ?></li>
                     </ul>
                     <a href="<?php echo $portfolio->url; ?>" target="_blank" class="cbp-l-project-details-visit btn red uppercase">visit the site</a>
                 </div>
