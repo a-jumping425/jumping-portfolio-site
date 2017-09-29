@@ -14,7 +14,7 @@ class PortfolioController extends Controller {
         $block = Input::get('block');
         $count_per_page = env('PORTFOLIO_COUNT_PER_PAGE');
 
-        $sql = "SELECT COUNT(id) as total FROM portfolios";
+        $sql = "SELECT COUNT(id) as total FROM portfolios WHERE visibility = 1";
         $total = DB::select($sql);
         $total = $total[0]->total;
         var_dump($total);
@@ -22,6 +22,7 @@ class PortfolioController extends Controller {
         $sql = "SELECT p.*, m.url AS featured_image_url, m.path AS featured_image_path
                 FROM portfolios AS p
                 LEFT JOIN media AS m ON m.id = p.featured_image AND m.temp = 0
+                WHERE visibility = 1
                 ORDER BY ordering ASC
                 LIMIT ?, ?";
         $portfolios = DB::select($sql, [$count_per_page * $block, $count_per_page]);

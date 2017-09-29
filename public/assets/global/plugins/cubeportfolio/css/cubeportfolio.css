@@ -2602,11 +2602,11 @@
 
 .cbp-l-project-desc {
   float: left;
-  width: 62%; }
+  width: 50%; }
 
 .cbp-l-project-details {
   float: right;
-  width: 38%;
+  width: 50%;
   padding-left: 60px;
   margin-bottom: 15px; }
 
