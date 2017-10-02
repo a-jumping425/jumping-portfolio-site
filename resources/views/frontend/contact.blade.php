@@ -41,18 +41,19 @@
                             <p>Lorem ipsum dolor sit amet, Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat consectetuer adipiscing elit, sed diam nonummy nibh euismod tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
 
                             <!-- BEGIN FORM-->
-                            <form action="#" role="form">
+                            <form action="{{ url('contact/send') }}" method="post" role="form">
+                                {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="contacts-name">Name</label>
-                                    <input type="text" class="form-control" id="contacts-name">
+                                    <input type="text" class="form-control" id="contacts-name" name="name">
                                 </div>
                                 <div class="form-group">
                                     <label for="contacts-email">Email</label>
-                                    <input type="email" class="form-control" id="contacts-email">
+                                    <input type="email" class="form-control" id="contacts-email" name="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="contacts-message">Message</label>
-                                    <textarea class="form-control" rows="5" id="contacts-message"></textarea>
+                                    <textarea class="form-control" rows="5" id="contacts-message" name="message"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Send</button>
                             </form>

@@ -13,6 +13,7 @@
 Route::group([], function () {
     Route::get('/', 'Frontend\HomeController@index');
     Route::get('contact', 'Frontend\ContactController@index');
+    Route::post('contact/send', 'Frontend\ContactController@send');
     Route::get('portfolio', 'Frontend\PortfolioController@index');
     Route::get('portfolio/{id}', 'Frontend\PortfolioController@detail');
 });
