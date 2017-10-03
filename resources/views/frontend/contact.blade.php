@@ -7,6 +7,10 @@
     <link href="{{ url('/') }}/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
 @endsection
 
+@section('page_level_css')
+    <link href="{{ url('/') }}/assets/corporate/css/contact.css" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('page_level_plugins_js')
     <script src="{{ url('/') }}/assets/global/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyD1WboZa7GwjCVDa83rkcsFRFZgQk96DN0" type="text/javascript"></script>
@@ -33,6 +37,11 @@
                 <h1>Contacts</h1>
                 <div class="content-page">
                     <div class="row">
+                        @if (isset($success))
+                            <div class="col-md-12">
+                                <h3 class="contact-thankyou">Thank you for your contact.</h3>
+                            </div>
+                        @endif
                         <div class="col-md-12">
                             <div id="map" class="gmaps margin-bottom-40" style="height:400px;"></div>
                         </div>

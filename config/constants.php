@@ -166,7 +166,16 @@ return [
             'url' => '/contact',
             'icon' => '',
             'hidden' => 0,
-            'children' => []
+            'children' => [
+                [
+                    'id' => 'contact_thank_you',
+                    'name' => 'Contact - Thank you',
+                    'url' => '/contact/thank-you',
+                    'icon' => '',
+                    'hidden' => 1,
+                    'children' => []
+                ]
+            ]
         ]
     ]
 ];

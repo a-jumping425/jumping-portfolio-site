@@ -12,6 +12,10 @@ class ContactController extends Controller {
         return view('frontend.contact');
     }
 
+    public function thank_you() {
+        return view('frontend.contact', ['success' => 1]);
+    }
+
     public function send() {
         $email = Input::get('email');
 
@@ -22,5 +26,7 @@ class ContactController extends Controller {
         // to user
         Mail::to($email)
             ->send(new ContactToUser());
+
+        return redirect('contact/thank-you');
     }
 }
