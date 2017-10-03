@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('page_level_plugins_css')
-    <link href="{{ url('/') }}/assets/pages/css/animate.css" rel="stylesheet">
+    <link href="{{ url('/') }}/assets/corporate/css/animate.css" rel="stylesheet">
     <link href="{{ url('/') }}/assets/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
     <link href="{{ url('/') }}/assets/global/plugins/owl-carousel/owl.carousel.css" rel="stylesheet">
 @endsection
@@ -13,7 +13,7 @@
     <script src="{{ url('/') }}/assets/global/plugins/owl-carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
 
     <script src="{{ url('/') }}/assets/corporate/scripts/layout.js" type="text/javascript"></script>
-    <script src="{{ url('/') }}/assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
+    <script src="{{ url('/') }}/assets/corporate/scripts/bs-carousel.js" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
             Layout.init();

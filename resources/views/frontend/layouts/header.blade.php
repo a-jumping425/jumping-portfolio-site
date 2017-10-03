@@ -44,8 +44,8 @@
     <!-- END PAGE LEVEL STYLES -->
 
     <!-- Theme styles START -->
-    <link href="{{ url('/') }}/assets/pages/css/components.css" rel="stylesheet">
-    <link href="{{ url('/') }}/assets/pages/css/slider.css" rel="stylesheet">
+    <link href="{{ url('/') }}/assets/corporate/css/components.css" rel="stylesheet">
+    <link href="{{ url('/') }}/assets/corporate/css/slider.css" rel="stylesheet">
     <link href="{{ url('/') }}/assets/corporate/css/style.css" rel="stylesheet">
     <link href="{{ url('/') }}/assets/corporate/css/style-responsive.css" rel="stylesheet">
     <link href="{{ url('/') }}/assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">

@@ -15,7 +15,7 @@
     <script src="{{ url('/') }}/assets/global/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyD1WboZa7GwjCVDa83rkcsFRFZgQk96DN0" type="text/javascript"></script>
     <script src="{{ url('/') }}/assets/global/plugins/gmaps/gmaps.js" type="text/javascript"></script>
-    <script src="{{ url('/') }}/assets/pages/scripts/contact-us.js" type="text/javascript"></script>
+    <script src="{{ url('/') }}/assets/corporate/scripts/contact-us.js" type="text/javascript"></script>
 
     <script src="{{ url('/') }}/assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script type="text/javascript">

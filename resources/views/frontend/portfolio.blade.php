@@ -7,14 +7,14 @@
 @endsection
 
 @section('page_level_css')
-    <link href="{{ url('/') }}/assets/pages/css/portfolio-frontend.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url('/') }}/assets/corporate/css/portfolio.css" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('page_level_plugins_js')
     <script src="{{ url('/') }}/assets/global/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>
 
     <script src="{{ url('/') }}/assets/corporate/scripts/layout.js" type="text/javascript"></script>
-    <script src="{{ url('/') }}/assets/pages/scripts/portfolio-frontend.js" type="text/javascript"></script>
+    <script src="{{ url('/') }}/assets/corporate/scripts/portfolio.js" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
             Layout.init();
